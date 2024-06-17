@@ -1,6 +1,6 @@
 package test.conjuntistas;
 
-import conjuntistas.ArbolBB;
+import conjuntistas.dinamicas.ArbolBB;
 
 
 
