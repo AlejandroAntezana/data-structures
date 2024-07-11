@@ -3,16 +3,18 @@ import conjuntistas.lineales.HeapMin;
 
 public class TestHeapMinV2 {
     public static void main(String[] args) {
+        System.out.println("Inicia prueba de insertar elementos en un heap");
         pruebaInsertarElemento();
         System.out.println("-------------------------------------------------");
+        System.out.println("Inicia prueba de eliminar cima de un heap");
         pruebaEliminarCima();
         System.out.println("-------------------------------------------------");
+        System.out.println("Inicia prueba de recuperar cima de un heap");
         pruebaRecuperarCima();
         System.out.println("-------------------------------------------------");
+        System.out.println("Inicia prueba de vaciar un heap");
         pruebaEsVacioYVaciar();
         System.out.println("Finalizaron las pruebas");
-
-
     }
 
     //metodo que prueba insertar 10 elementos aleatorios en un heap

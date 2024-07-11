@@ -77,7 +77,7 @@ public class HeapMin {
     public HeapMin clone() {
         HeapMin clon = new HeapMin();
         clon.ultimo = this.ultimo;
-        clon.heap = this.heap.clone();
+        clon.heap = this.heap.clone(); //Utilizamos el metodo clone de la clase Object
         return clon;
     }
 

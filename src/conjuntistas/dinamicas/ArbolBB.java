@@ -121,7 +121,6 @@ public class ArbolBB {
         return exito;
     }
 
-
     public boolean esVacio() {
         // Devuelve falso si hay al menos un elemento en el árbol y verdadero en caso contrario.
         return this.raiz == null;
