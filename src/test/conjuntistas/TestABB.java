@@ -1,13 +1,13 @@
 package test.conjuntistas;
 
 //import conjuntistas.dinamicas.ArbolBB;
-import conjuntistas.dinamicas.ArbolBB_V2;
+import conjuntistas.dinamicas.ArbolBB;
 
 
 public class TestABB {
     public static void main(String[] args) {
         //generar un test para probar todas las operaciones del arbol binario de busqueda
-        ArbolBB_V2 arbol = new ArbolBB_V2();
+        ArbolBB arbol = new ArbolBB();
         System.out.println("-----PRUEBA METODO toString(), esVacio() e insertar()-----");
         System.out.println("Arbol vacio: " + arbol.toString());
         System.out.println("Es vacio: " + arbol.esVacio());
