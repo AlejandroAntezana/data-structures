@@ -77,17 +77,26 @@ public class Lista {
         return elem;
     }
 
+    /**
+     * Busca un elemento en la lista.
+     * @param elem el elemento a buscar.
+     * @return la posición (1-based) donde se encuentra, o -1 si no se encuentra.
+     */
     public int localizar(Object elem) {
         int locacion = -1;
         boolean exito = false;
         if (!esVacia()) {
             int varIter = 1;
-            Nodo indice;
-            for (indice = this.cabecera; indice != null && !exito; indice = indice.getEnlace()) {
-                if (elem == indice.getElem()) {
+            Nodo indice = this.cabecera;
+
+            // Recorremos la lista mientras no encontremos el elemento
+            while (indice != null && !exito) {
+                // CORRECCIÓN: Usamos .equals() para comparar el contenido
+                if (elem.equals(indice.getElem())) {
                     exito = true;
                     locacion = varIter;
                 }
+                indice = indice.getEnlace();
                 varIter++;
             }
         }
@@ -131,17 +140,23 @@ public class Lista {
 
     @Override
     public String toString() {
-        String elementos = "";
+        if (esVacia()) {
+            return "[]";
+        }
 
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
         Nodo indice = this.cabecera;
 
         while (indice != null) {
-            elementos += indice.getElem().toString();
+            sb.append(indice.getElem().toString());
             indice = indice.getEnlace();
+            if (indice != null) {
+                sb.append(", ");
+            }
         }
-        return "Lista{" +
-                elementos +
-                '}';
+        sb.append("]");
+        return sb.toString();
     }
 
     public Lista obtenerMultiplos(int num) {
@@ -174,16 +189,31 @@ public class Lista {
         return listaNueva;
     }
 
+    /**
+     * Elimina todas las apariciones de un elemento 'x' en la lista.
+     * @param x el elemento a eliminar.
+     */
     public void eliminarApariciones(Object x) {
-        if (!esVacia()) {
-            Nodo indice = this.cabecera;
-            while (indice != null) {
-                if (indice.getElem().equals(x)) {
-                    this.cabecera = this.cabecera.getEnlace();
-                } else if (indice.getEnlace().getElem().equals(x)) {
-                    indice.setEnlace(indice.getEnlace().getEnlace());
+        // Usamos dos punteros, uno 'previo' y uno 'actual'
+        Nodo prev = null;
+        Nodo actual = this.cabecera;
+
+        while (actual != null) {
+            if (actual.getElem().equals(x)) {
+                // Se encontró el elemento 'x', hay que eliminarlo
+                if (prev == null) {
+                    // El elemento a eliminar es la cabecera
+                    this.cabecera = actual.getEnlace();
+                } else {
+                    // El elemento está en el medio o al final
+                    prev.setEnlace(actual.getEnlace());
                 }
-                indice=indice.getEnlace();
+                // Avanzamos 'actual' sin mover 'prev', por si hay elementos repetidos
+                actual = actual.getEnlace();
+            } else {
+                // El elemento no es 'x', avanzamos ambos punteros
+                prev = actual;
+                actual = actual.getEnlace();
             }
         }
     }
