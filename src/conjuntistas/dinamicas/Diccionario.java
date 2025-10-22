@@ -235,4 +235,62 @@ public class Diccionario {
         h.recalcularAltura();
         return h;
     }
+
+    /**
+     * Genera una representación en String de la ESTRUCTURA jerárquica del árbol.
+     * Este método cumple con el requisito de "Mostrar Sistema"[cite: 34],
+     * permitiendo ver la altura de cada nodo y sus hijos[cite: 36].
+     *
+     * @return un String que describe la jerarquía del árbol (recorrido preorden).
+     */
+    public String toStringEstructura() {
+        if (this.raiz == null) {
+            return "Diccionario (AVL) vacío.";
+        }
+        // Llama al método recursivo auxiliar que inicia desde la raíz.
+        return toStringEstructuraAux(this.raiz);
+    }
+
+    /**
+     * Método auxiliar recursivo (en preorden) para construir el String
+     * de la estructura del árbol.
+     *
+     * @param nodo El nodo (NodoDic) actual a procesar.
+     * @return El String que representa el subárbol que tiene 'nodo' como raíz.
+     */
+    private String toStringEstructuraAux(NodoDic nodo) {
+        // Usamos StringBuilder para una concatenación eficiente.
+        StringBuilder sb = new StringBuilder();
+
+        if (nodo != null) {
+            // 1. Procesa el nodo actual (equivale a la visita en Preorden)
+            sb.append("Nodo: ").append(nodo.getClave());
+            sb.append(" (Altura: ").append(nodo.getAltura()).append(")\n");
+
+            // 2. Muestra el hijo izquierdo
+            sb.append("\tHI: ");
+            if (nodo.getIzquierdo() != null) {
+                sb.append(nodo.getIzquierdo().getClave()).append("\n");
+            } else {
+                sb.append("-\n"); // Sin hijo izquierdo
+            }
+
+            // 3. Muestra el hijo derecho
+            sb.append("\tHD: ");
+            if (nodo.getDerecho() != null) {
+                sb.append(nodo.getDerecho().getClave()).append("\n\n");
+            } else {
+                sb.append("-\n\n"); // Sin hijo derecho
+            }
+
+            // 4. Llamadas recursivas para los hijos
+            if (nodo.getIzquierdo() != null) {
+                sb.append(toStringEstructuraAux(nodo.getIzquierdo()));
+            }
+            if (nodo.getDerecho() != null) {
+                sb.append(toStringEstructuraAux(nodo.getDerecho()));
+            }
+        }
+        return sb.toString();
+    }
 }

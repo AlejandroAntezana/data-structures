@@ -1,0 +1,84 @@
+# --- SET DE CARGA INICIAL TRENESSA ---
+# Formato Estacion: E;nombre;calle;numero;ciudad;cp;vias;plataformas
+# Formato Tren:     T;id;propulsion;vagonesPas;vagonesCarga;linea
+# Formato Riel:      R;estacionOrigen;estacionDestino;distanciaKm
+# Formato Linea:     L;nombreLinea;estacion1;estacion2;...
+
+E;Retiro;Av. Ramos Mejía;1430;CABA;C1104;9;6
+T;101;diesel;5;2;Mitre
+E;Plaza Constitución;Av. Brasil;1128;CABA;C1154;10;8
+R;Retiro;Rosario Norte;300
+E;Rosario Norte;Av. del Valle;2700;Rosario;S2000;6;4
+T;102;electrico;8;0;Roca
+E;Córdoba;Blvd. Perón;101;Córdoba;X5000;7;5
+R;Rosario Norte;Córdoba;400
+L;Roca;Plaza Constitución;La Plata;Mar del Plata;Bahía Blanca;Neuquén
+E;Tucumán;Corrientes;1050;Tucumán;T4000;5;3
+T;103;diesel;4;1;San Martín
+E;Santa Fe;Blvd. Gálvez;1150;Santa Fe;S3000;4;2
+R;Córdoba;Tucumán;550
+E;Once;Av. Pueyrredón;100;CABA;C1081;6;4
+T;104;electrico;7;0;Sarmiento
+R;Tucumán;Salta;300
+E;Salta;Ameghino;800;Salta;A4400;3;2
+T;105;diesel;6;3;Roca
+E;Mendoza;Av. Las Heras;600;Mendoza;M5500;4;3
+E;Federico Lacroze;Av. Corrientes;6000;CABA;C1427;5;4
+R;Salta;Jujuy;120
+E;La Plata;Av. 1;1;La Plata;B1900;7;5
+T;106;diesel;3;5;Mitre
+R;Retiro;Santa Fe;475
+E;Mar del Plata;San Juan;1642;Mar del Plata;B7600;5;4
+T;107;electrico;9;0;Roca
+R;Santa Fe;Resistencia;700
+L;Mitre;Retiro;Rosario Norte;Córdoba;Tucumán;Santa Fe
+T;108;hibrido;4;4;no-asignado
+E;Bahía Blanca;Av. Cerri;750;Bahía Blanca;B8000;4;3
+R;Resistencia;Corrientes;25
+T;109;diesel;5;0;San Martín
+E;Neuquén;Independencia;250;Neuquén;Q8300;3;2
+E;Jujuy;Otero;500;Jujuy;Y4600;2;1
+R;Corrientes;Posadas;340
+T;110;diesel;2;7;no-asignado
+E;Bariloche;Av. 12 de Octubre;2400;Bariloche;R8400;3;2
+T;111;electrico;6;0;Sarmiento
+R;Retiro;Mendoza;1050
+E;Viedma;Av. Cardenal Cagliero;4000;Viedma;R8500;2;1
+R;Mendoza;San Juan;170
+T;112;diesel;4;0;Mitre
+E;San Juan;Av. España;100;San Juan;J5400;2;2
+E;Paraná;Av. Ramírez;2000;Paraná;E3100;3;2
+T;113;diesel;5;1;Roca
+R;Plaza Constitución;Mar del Plata;400
+T;114;gasolina;0;3;no-asignado
+E;Posadas;Av. Mitre;2500;Posadas;N3300;2;1
+L;Sarmiento;Once;Santa Fe
+R;Plaza Constitución;La Plata;55
+E;Corrientes;Av. Maipú;300;Corrientes;W3400;2;1
+T;115;electrico;8;0;Roca
+R;Plaza Constitución;Bahía Blanca;640
+T;116;diesel;4;2;San Martín
+E;Resistencia;Av. 9 de Julio;800;Resistencia;H3500;2;1
+R;Bahía Blanca;Neuquén;530
+T;117;diesel;6;0;Mitre
+R;Neuquén;Bariloche;415
+T;118;electrico;7;0;Sarmiento
+R;Bahía Blanca;Viedma;270
+T;119;diesel;5;2;Roca
+R;Once;Santa Fe;480
+T;120;fuel oil;0;10;no-asignado
+R;Federico Lacroze;Paraná;500
+T;121;electrico;10;0;Roca
+R;Paraná;Corrientes;470
+R;Rosario Norte;Santa Fe;170
+R;Córdoba;Mendoza;650
+L;San Martín;Retiro;Mendoza;San Juan
+R;Once;Neuquén;1140
+R;Retiro;Córdoba;700
+T;122;diesel;4;1;Mitre
+R;Mar del Plata;Bahía Blanca;450
+R;San Juan;La Plata;1200
+R;Jujuy;Posadas;1300
+R;Viedma;Bariloche;820
+R;La Plata;Mar del Plata;350
+R;Tucumán;Mendoza;1000

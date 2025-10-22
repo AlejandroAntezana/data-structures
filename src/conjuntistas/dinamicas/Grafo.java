@@ -8,7 +8,7 @@ import conjuntistas.dinamicas.Diccionario; // Necesario para caminoMasCorto (BFS
  * Implementación dinámica (listas de adyacencia) del TDA Grafo Etiquetado.
  * Las operaciones de inserción y eliminación de arcos están adaptadas
  * para un grafo NO DIRIGIDO (ambos sentidos), según lo requerido
- * por el trabajo práctico de TrenesSA.
+ * por el trabajo práctico de dominio.TrenesSA.
  */
 public class Grafo {
 

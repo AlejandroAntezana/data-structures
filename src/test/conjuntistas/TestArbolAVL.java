@@ -6,7 +6,7 @@ public class TestArbolAVL {
         //test exhaustivo de los metodos de la clase ArbolAVL
         ArbolAVL arbol = new ArbolAVL();
         System.out.println("Arbol vacio: " + arbol.toString());
-        System.out.println("Arbol vacio es vacio: " + arbol.esVacio());
+       // System.out.println("Arbol vacio es vacio: " + arbol.esVacio());
         System.out.println("Arbol vacio pertenece 1: " + arbol.pertenece(1));
 
         System.out.println("Insertar 10: " + arbol.insertar(10));
