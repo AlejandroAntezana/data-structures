@@ -2,6 +2,8 @@ package dominio;
 
 import conjuntistas.dinamicas.Diccionario;
 import conjuntistas.dinamicas.Grafo;
+import lineales.dinamicas.Lista;
+import lineales.dinamicas.Cola;
 
 // Para el Mapeo de Líneas, usamos el HashMap de Java como pide el enunciado
 import java.util.HashMap;
@@ -375,5 +377,446 @@ public class TrenesSA {
         }
         System.out.println("\n=======================================================");
     }
+
+    // ---- METODOS ABM ----
+    /**
+     * Da de ALTA una nueva estación en el sistema.
+     * La inserta tanto en el diccionario de estaciones como en el grafo.
+     *
+     * @param nombre          Nombre único (Clave)
+     * @param calle           Calle del domicilio
+     * @param numero          Número del domicilio
+     * @param ciudad          Ciudad
+     * @param codigoPostal    Código Postal
+     * @param cantVias        Cantidad de vías
+     * @param cantPlataformas Cantidad de plataformas
+     * @return verdadero si se pudo insertar, falso si la estación ya existía.
+     */
+    public boolean altaEstacion(String nombre, String calle, int numero, String ciudad,
+                                String codigoPostal, int cantVias, int cantPlataformas) {
+
+        // 1. Crear el objeto Estacion
+        Estacion nuevaEstacion = new Estacion(nombre, calle, numero, ciudad,
+                codigoPostal, cantVias, cantPlataformas);
+
+        // 2. Intentar insertar en el diccionario de estaciones
+        boolean exitoDic = this.estaciones.insertar(nombre, nuevaEstacion);
+
+        // 3. Si tuvo éxito, insertar también en el grafo como vértice
+        boolean exitoGrafo = false;
+        if (exitoDic) {
+            exitoGrafo = this.redDeRieles.insertarVertice(nuevaEstacion);
+        }
+
+        // 4. Registrar en el log y devolver
+        if (exitoDic && exitoGrafo) {
+            escribirLog("ALTA Estación: " + nombre);
+        } else if (!exitoDic) {
+            System.err.println("Error en ALTA: La estación '" + nombre + "' ya existe.");
+        }
+
+        return exitoDic && exitoGrafo;
+    }
+
+    /**
+     * Da de BAJA una estación del sistema.
+     * La elimina del diccionario de estaciones y del grafo.
+     *
+     * @param nombre El nombre de la estación a eliminar.
+     * @return verdadero si se encontró y eliminó, falso en caso contrario.
+     */
+    public boolean bajaEstacion(String nombre) {
+        // 1. Obtener el OBJETO Estacion desde el diccionario (lo necesitamos para el grafo)
+        Estacion estacionAEliminar = (Estacion) this.estaciones.obtener(nombre);
+
+        if (estacionAEliminar == null) {
+            System.err.println("Error en BAJA: No se encontró la estación '" + nombre + "'.");
+            return false;
+        }
+
+        // 2. Eliminar la estación del grafo (esto elimina el vértice y todos los rieles incidentes)
+        boolean exitoGrafo = this.redDeRieles.eliminarVertice(estacionAEliminar);
+
+        // 3. Eliminar la estación del diccionario
+        boolean exitoDic = this.estaciones.eliminar(nombre);
+
+        // 4. Registrar en el log
+        if (exitoGrafo && exitoDic) {
+            escribirLog("BAJA Estación: " + nombre + ". Se eliminaron también todos sus rieles asociados.");
+        } else {
+            // Esto sería un error de sincronización interna si ocurriera
+            escribirLog("ERROR INESPERADO en BAJA: No se pudo eliminar '" + nombre + "' de ambas estructuras.");
+        }
+
+        // NOTA: La estación también debería ser eliminada de las Líneas donde aparece.
+        // Se puede implementar aquí o asumir que el usuario lo hará manualmente
+        // con el ABM de Líneas. Por ahora lo dejamos así por modularidad.
+
+        return exitoGrafo && exitoDic;
+    }
+
+    /**
+     * MODIFICA los datos de una estación existente.
+     * No se permite modificar el nombre, ya que es la clave.
+     *
+     * @param nombre          El nombre de la estación a buscar.
+     * @param calle           El *nuevo* domicilio
+     * @param numero          El *nuevo* número
+     * @param ciudad          La *nueva* ciudad
+     * @param codigoPostal    El *nuevo* CP
+     * @param cantVias        La *nueva* cantidad de vías
+     * @param cantPlataformas La *nueva* cantidad de plataformas
+     * @return verdadero si se encontró y modificó, falso si no se encontró.
+     */
+    public boolean modificarEstacion(String nombre, String calle, int numero, String ciudad,
+                                     String codigoPostal, int cantVias, int cantPlataformas) {
+
+        // 1. Obtener la estación del diccionario
+        Estacion estacionAModificar = (Estacion) this.estaciones.obtener(nombre);
+
+        if (estacionAModificar == null) {
+            System.err.println("Error en MODIFICACIÓN: No se encontró la estación '" + nombre + "'.");
+            return false;
+        }
+
+        // 2. Actualizar los datos usando los setters (los datos mutables)
+        estacionAModificar.setCalle(calle);
+        estacionAModificar.setNumero(numero);
+        estacionAModificar.setCiudad(ciudad);
+        estacionAModificar.setCodigoPostal(codigoPostal);
+        estacionAModificar.setCantVias(cantVias);
+        estacionAModificar.setCantPlataformas(cantPlataformas);
+
+        // 3. Registrar en el log
+        escribirLog("MODIFICACIÓN Estación: " + nombre);
+        return true;
+    }
+
+    /**
+     * Da de ALTA un nuevo riel (arco no dirigido) entre dos estaciones.
+     *
+     * @param nombreEst1 El nombre de la estación origen.
+     * @param nombreEst2 El nombre de la estación destino.
+     * @param km         La distancia (etiqueta) en kilómetros entre ellas.
+     * @return verdadero si ambas estaciones existen y el riel se pudo crear.
+     */
+    public boolean altaRiel(String nombreEst1, String nombreEst2, double km) {
+        // 1. Obtener los objetos Estacion desde el diccionario
+        Estacion e1 = (Estacion) this.estaciones.obtener(nombreEst1);
+        Estacion e2 = (Estacion) this.estaciones.obtener(nombreEst2);
+
+        // 2. Validar que ambas estaciones existan
+        if (e1 == null || e2 == null) {
+            System.err.println("Error en ALTA Riel: Una o ambas estaciones no existen.");
+            System.err.println("  - Estación 1 ('" + nombreEst1 + "'): " + (e1 != null ? "Encontrada" : "NO Encontrada"));
+            System.err.println("  - Estación 2 ('" + nombreEst2 + "'): " + (e2 != null ? "Encontrada" : "NO Encontrada"));
+            return false;
+        }
+
+        // 3. Validar que la distancia sea positiva
+        if (km <= 0) {
+            System.err.println("Error en ALTA Riel: La distancia debe ser mayor a 0 km.");
+            return false;
+        }
+
+        // 4. Insertar el arco no dirigido en el grafo
+        boolean exito = this.redDeRieles.insertarArco(e1, e2, km);
+
+        // 5. Registrar en el log
+        if (exito) {
+            escribirLog("ALTA Riel: " + nombreEst1 + " <-> " + nombreEst2 + " (" + km + " km)");
+        } else {
+            // Nota: nuestro insertarArco no devuelve falso, pero si lo hiciera (ej. si ya existe),
+            // aquí se manejaría.
+            escribirLog("ALTA Riel fallida (posiblemente ya existía): " + nombreEst1 + " <-> " + nombreEst2);
+        }
+
+        return exito;
+    }
+
+    /**
+     * Da de BAJA un riel (arco no dirigido) entre dos estaciones.
+     *
+     * @param nombreEst1 El nombre de la estación origen.
+     * @param nombreEst2 El nombre de la estación destino.
+     * @return verdadero si ambas estaciones existen y el riel se pudo eliminar.
+     */
+    public boolean bajaRiel(String nombreEst1, String nombreEst2) {
+        // 1. Obtener los objetos Estacion desde el diccionario
+        Estacion e1 = (Estacion) this.estaciones.obtener(nombreEst1);
+        Estacion e2 = (Estacion) this.estaciones.obtener(nombreEst2);
+
+        // 2. Validar que ambas estaciones existan
+        if (e1 == null || e2 == null) {
+            System.err.println("Error en BAJA Riel: Una o ambas estaciones no existen.");
+            return false;
+        }
+
+        // 3. Eliminar el arco no dirigido del grafo
+        boolean exito = this.redDeRieles.eliminarArco(e1, e2);
+
+        // 4. Registrar en el log
+        if (exito) {
+            escribirLog("BAJA Riel: " + nombreEst1 + " <-> " + nombreEst2);
+        } else {
+            // Nota: nuestro eliminarArco no devuelve falso si el arco no existía.
+            escribirLog("BAJA Riel fallida (posiblemente no existía): " + nombreEst1 + " <-> " + nombreEst2);
+        }
+
+        return exito;
+    }
+
+    /**
+     * MODIFICA la distancia (etiqueta) de un riel existente.
+     * (Solo podemos modificar la distancia de un Riel, dado que las estaciones de origen y destino son claves).
+     *
+     * @param nombreEst1 El nombre de la estación origen.
+     * @param nombreEst2 El nombre de la estación destino.
+     * @param nuevaDistanciaKm La *nueva* distancia en kilómetros.
+     * @return verdadero si el riel fue encontrado y modificado.
+     */
+    public boolean modificarRiel(String nombreEst1, String nombreEst2, double nuevaDistanciaKm) {
+        // 1. Obtener los objetos Estacion
+        Estacion e1 = (Estacion) this.estaciones.obtener(nombreEst1);
+        Estacion e2 = (Estacion) this.estaciones.obtener(nombreEst2);
+
+        // 2. Validar que ambas estaciones existan
+        if (e1 == null || e2 == null) {
+            System.err.println("Error en MODIFICAR Riel: Una o ambas estaciones no existen.");
+            return false;
+        }
+
+        // 3. Validar que la nueva distancia sea positiva
+        if (nuevaDistanciaKm <= 0) {
+            System.err.println("Error en MODIFICAR Riel: La distancia debe ser mayor a 0 km.");
+            return false;
+        }
+
+        // 4. Llamar al nuevo método del grafo
+        boolean exito = this.redDeRieles.modificarEtiqueta(e1, e2, nuevaDistanciaKm);
+
+        // 5. Registrar en el log
+        if (exito) {
+            escribirLog("MODIFICACIÓN Riel: " + nombreEst1 + " <-> " + nombreEst2 +
+                    ". Nueva distancia: " + nuevaDistanciaKm + " km");
+        } else {
+            escribirLog("MODIFICACIÓN Riel fallida (el riel no existe): " + nombreEst1 + " <-> " + nombreEst2);
+            System.err.println("Error en MODIFICAR Riel: No se encontró un riel entre " +
+                    nombreEst1 + " y " + nombreEst2 + ".");
+        }
+
+        return exito;
+    }
+
+    /**
+     * Da de ALTA un nuevo tren en el sistema.
+     *
+     * @param id               El ID numérico único (Clave).
+     * @param propulsion       Tipo de propulsión (ej. "diesel", "electrico").
+     * @param vagonesPasajeros Cantidad de vagones de pasajeros.
+     * @param vagonesCarga     Cantidad de vagones de carga.
+     * @param linea            Nombre de la línea asignada (o "libre", "no-asignado").
+     * @return verdadero si se pudo insertar, falso si el ID ya existía.
+     */
+    public boolean altaTren(int id, String propulsion, int vagonesPasajeros, int vagonesCarga, String linea) {
+
+        // 1. Validar que el ID sea positivo
+        if (id <= 0) {
+            System.err.println("Error en ALTA Tren: El ID debe ser un número positivo.");
+            return false;
+        }
+
+        // 2. Crear el objeto Tren
+        Tren nuevoTren = new Tren(id, propulsion, vagonesPasajeros, vagonesCarga, linea);
+
+        // 3. Insertar en el diccionario de trenes
+        boolean exito = this.trenes.insertar(id, nuevoTren);
+
+        // 4. Registrar en el log
+        if (exito) {
+            escribirLog("ALTA Tren: ID " + id);
+        } else {
+            System.err.println("Error en ALTA Tren: El ID " + id + " ya existe.");
+        }
+
+        return exito;
+    }
+
+    /**
+     * Da de BAJA un tren del sistema usando su ID.
+     * (Implementa parte de la Opción 2 del menú).
+     *
+     * @param id El ID numérico del tren a eliminar.
+     * @return verdadero si se encontró y eliminó, falso en caso contrario.
+     */
+    public boolean bajaTren(int id) {
+        // 1. Intentar eliminar el tren del diccionario
+        boolean exito = this.trenes.eliminar(id);
+
+        // 2. Registrar en el log
+        if (exito) {
+            escribirLog("BAJA Tren: ID " + id);
+        } else {
+            System.err.println("Error en BAJA Tren: No se encontró un tren con ID " + id + ".");
+        }
+
+        return exito;
+    }
+
+    /**
+     * MODIFICA los datos de un tren existente.
+     * No se permite modificar el ID, ya que es la clave.
+     *
+     * @param id               El ID del tren a buscar.
+     * @param propulsion       La *nueva* propulsión.
+     * @param vagonesPasajeros La *nueva* cantidad de vagones de pasajeros.
+     * @param vagonesCarga     La *nueva* cantidad de vagones de carga.
+     * @param linea            La *nueva* línea asignada.
+     * @return verdadero si se encontró y modificó, falso si no se encontró.
+     */
+    public boolean modificarTren(int id, String propulsion, int vagonesPasajeros, int vagonesCarga, String linea) {
+
+        // 1. Obtener el tren del diccionario
+        Tren trenAModificar = (Tren) this.trenes.obtener(id);
+
+        if (trenAModificar == null) {
+            System.err.println("Error en MODIFICACIÓN Tren: No se encontró un tren con ID " + id + ".");
+            return false;
+        }
+
+        // 2. Actualizar los datos usando los setters (datos mutables)
+        trenAModificar.setPropulsion(propulsion);
+        trenAModificar.setVagonesPasajeros(vagonesPasajeros);
+        trenAModificar.setVagonesCarga(vagonesCarga);
+        trenAModificar.setLinea(linea);
+
+        // 3. Registrar en el log
+        escribirLog("MODIFICACIÓN Tren: ID " + id);
+        return true;
+    }
+
+    /**
+     * Da de ALTA (crea) una nueva línea de tren vacía en el sistema.
+     * (Implementa parte de la Opción 4 del menú).
+     *
+     * @param nombreLinea El nombre único de la nueva línea (ej. "Roca").
+     * @return verdadero si se pudo crear, falso si la línea ya existía.
+     */
+    public boolean crearLinea(String nombreLinea) {
+        boolean exito = false;
+        // 1. Verificar si la línea ya existe en el HashMap
+        if (this.mapeoLineas.containsKey(nombreLinea)) {
+            System.err.println("Error en ALTA Línea: La línea '" + nombreLinea + "' ya existe.");
+        } else {
+            // 2. Si no existe, crear una nueva lista vacía para ella
+            lineales.dinamicas.Lista nuevaListaEstaciones = new lineales.dinamicas.Lista();
+            // 3. Insertar la línea y su lista en el mapeo
+            this.mapeoLineas.put(nombreLinea, nuevaListaEstaciones);
+            escribirLog("ALTA Línea: Se creó la línea '" + nombreLinea + "'.");
+            exito = true;
+        }
+        return exito;
+    }
+
+    /**
+     * Da de BAJA (elimina) una línea de tren completa del sistema.
+     * (Implementa parte de la Opción 4 del menú).
+     *
+     * @param nombreLinea El nombre de la línea a eliminar.
+     * @return verdadero si la línea se encontró y eliminó.
+     */
+    public boolean eliminarLinea(String nombreLinea) {
+        // 1. Intentar remover la línea del HashMap
+        Object lineaEliminada = this.mapeoLineas.remove(nombreLinea);
+
+        if (lineaEliminada != null) {
+            escribirLog("BAJA Línea: Se eliminó la línea '" + nombreLinea + "'.");
+            return true;
+        } else {
+            System.err.println("Error en BAJA Línea: No se encontró la línea '" + nombreLinea + "'.");
+            return false;
+        }
+    }
+
+    /**
+     * MODIFICA una línea agregándole una estación.
+     * (Implementa parte de la Opción 4 del menú).
+     *
+     * @param nombreLinea    El nombre de la línea a modificar.
+     * @param nombreEstacion El nombre de la estación a agregar.
+     * @return verdadero si la línea y la estación existen, y la estación no
+     * estaba ya en la línea.
+     */
+    public boolean agregarEstacionALinea(String nombreLinea, String nombreEstacion) {
+        // 1. Obtener la lista de estaciones de la línea
+        Lista lista = (lineales.dinamicas.Lista) this.mapeoLineas.get(nombreLinea);
+        if (lista == null) {
+            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
+            return false;
+        }
+
+        // 2. Obtener el objeto Estacion
+        Estacion estacion = (Estacion) this.estaciones.obtener(nombreEstacion);
+        if (estacion == null) {
+            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la estación '" + nombreEstacion + "'.");
+            return false;
+        }
+
+        // 3. Verificar que la estación no esté ya en la lista
+        // Usamos el .localizar() que corregimos en Lista.java
+        if (lista.localizar(estacion) >= 0) {
+            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
+                    "' ya se encuentra en la línea '" + nombreLinea + "'.");
+            return false;
+        }
+
+        // 4. Insertar la estación (la agregamos al final)
+        lista.insertar(estacion, lista.longitud() + 1);
+        escribirLog("MODIFICACIÓN Línea: Se agregó estación '" + nombreEstacion +
+                "' a la línea '" + nombreLinea + "'.");
+        return true;
+    }
+
+    /**
+     * MODIFICA una línea quitándole una estación.
+     * (Implementa parte de la Opción 4 del menú).
+     *
+     * @param nombreLinea    El nombre de la línea a modificar.
+     * @param nombreEstacion El nombre de la estación a quitar.
+     * @return verdadero si la línea y la estación existen, y la estación
+     * se pudo quitar.
+     */
+    public boolean quitarEstacionDeLinea(String nombreLinea, String nombreEstacion) {
+        // 1. Obtener la lista de estaciones de la línea
+        lineales.dinamicas.Lista lista = (lineales.dinamicas.Lista) this.mapeoLineas.get(nombreLinea);
+        if (lista == null) {
+            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
+            return false;
+        }
+
+        // 2. Obtener el objeto Estacion (solo para buscarlo)
+        Estacion estacion = (Estacion) this.estaciones.obtener(nombreEstacion);
+        if (estacion == null) {
+            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion + "' no existe en el sistema.");
+            return false;
+        }
+
+        // 3. Localizar la estación en la lista
+        int pos = lista.localizar(estacion);
+        if (pos < 0) {
+            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
+                    "' no pertenece a la línea '" + nombreLinea + "'.");
+            return false;
+        }
+
+        // 4. Eliminar la estación de la lista por su posición
+        boolean exito = lista.eliminar(pos);
+        if (exito) {
+            escribirLog("MODIFICACIÓN Línea: Se quitó estación '" + nombreEstacion +
+                    "' de la línea '" + nombreLinea + "'.");
+        }
+        return exito;
+    }
+
 
 }

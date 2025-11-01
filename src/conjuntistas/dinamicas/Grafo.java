@@ -577,4 +577,60 @@ public class Grafo {
         }
         return sb.toString();
     }
+
+    /**
+     * Modifica la etiqueta (distancia) de un arco existente.
+     * Dado que es un grafo no dirigido, modifica la etiqueta en ambos sentidos
+     * (Origen -> Destino y Destino -> Origen).
+     *
+     * @param origen         el elemento del vértice origen.
+     * @param destino        el elemento del vértice destino.
+     * @param nuevaEtiqueta  el nuevo valor (distancia) para el arco.
+     * @return verdadero si el arco fue encontrado y modificado, falso en caso contrario.
+     */
+    public boolean modificarEtiqueta(Object origen, Object destino, double nuevaEtiqueta) {
+        boolean exito = false;
+        // 1. Ubicar ambos vértices
+        NodoVert nodoO = this.ubicarVertice(origen);
+        NodoVert nodoD = this.ubicarVertice(destino);
+
+        if (nodoO != null && nodoD != null) {
+            // 2. Modificar la etiqueta en el sentido Origen -> Destino
+            boolean exito1 = modificarEtiquetaUnSentido(nodoO, nodoD, nuevaEtiqueta);
+
+            // 3. Modificar la etiqueta en el sentido Destino -> Origen
+            boolean exito2 = modificarEtiquetaUnSentido(nodoD, nodoO, nuevaEtiqueta);
+
+            // Se considera exitoso si al menos una dirección pudo ser modificada
+            // (idealmente ambas deberían serlo).
+            exito = exito1 && exito2;
+        }
+        return exito;
+    }
+
+    /**
+     * Método auxiliar privado que modifica la etiqueta de un arco en un solo sentido.
+     * Busca en la lista de adyacentes de 'nodoOrigen' el arco que apunta
+     * a 'nodoDestino' y actualiza su etiqueta.
+     *
+     * @param nodoOrigen     El vértice de origen.
+     * @param nodoDestino    El vértice de destino.
+     * @param nuevaEtiqueta  El nuevo valor.
+     * @return verdadero si el arco fue encontrado y modificado, falso en caso contrario.
+     */
+    private boolean modificarEtiquetaUnSentido(NodoVert nodoOrigen, NodoVert nodoDestino, double nuevaEtiqueta) {
+        boolean exito = false;
+        NodoAdy auxAdy = nodoOrigen.getPrimerAdy();
+
+        // Buscamos el arco en la lista de adyacentes del origen
+        while (auxAdy != null && !exito) {
+            if (auxAdy.getVertice() == nodoDestino) {
+                // Arco encontrado, actualizamos la etiqueta y terminamos
+                auxAdy.setEtiqueta(nuevaEtiqueta);
+                exito = true;
+            }
+            auxAdy = auxAdy.getSigAdyacente();
+        }
+        return exito;
+    }
 }
