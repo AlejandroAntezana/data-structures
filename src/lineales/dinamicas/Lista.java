@@ -91,7 +91,6 @@ public class Lista {
 
             // Recorremos la lista mientras no encontremos el elemento
             while (indice != null && !exito) {
-                // CORRECCIÓN: Usamos .equals() para comparar el contenido
                 if (elem.equals(indice.getElem())) {
                     exito = true;
                     locacion = varIter;

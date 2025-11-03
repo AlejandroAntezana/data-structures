@@ -818,5 +818,217 @@ public class TrenesSA {
         return exito;
     }
 
+    // --- FASE 3: CONSULTAS ---
+
+    /**
+     * Devuelve la información completa de un tren dado su ID.
+     * (Implementa la Opción 6, parte A).
+     *
+     * @param id El ID numérico del tren a buscar.
+     * @return el objeto Tren si se encuentra, o null si no existe.
+     */
+    public Tren consultarInfoTren(int id) {
+        Tren tren = (Tren) this.trenes.obtener(id);
+        if (tren == null) {
+            System.err.println("Consulta: No se encontró un tren con ID " + id + ".");
+        }
+        return tren;
+    }
+
+    /**
+     * Devuelve una lista de las CIUDADES (sin repetir) que visita un tren.
+     * Lo hace buscando la línea asignada al tren y luego las ciudades
+     * de las estaciones de esa línea.
+     * (Implementa la Opción 6, parte B).
+     *
+     * @param id El ID numérico del tren a consultar.
+     * @return una Lista de Strings con los nombres de las ciudades.
+     */
+    public Lista consultarCiudadesPorTren(int id) {
+        Lista ciudades = new Lista(); // Lista de Strings (ciudades)
+
+        // 1. Obtener el tren
+        Tren t = (Tren) this.trenes.obtener(id);
+        if (t == null) {
+            System.err.println("Consulta: No se encontró el tren con ID " + id + ".");
+            return ciudades; // Devuelve lista vacía
+        }
+
+        // 2. Obtener la línea del tren
+        String nombreLinea = t.getLinea();
+        if (nombreLinea.equalsIgnoreCase("libre") || nombreLinea.equalsIgnoreCase("no-asignado")) {
+            System.out.println("Consulta: El tren " + id + " está libre, no visita ciudades.");
+            return ciudades; // Devuelve lista vacía
+        }
+
+        // 3. Obtener la lista de estaciones de esa línea
+        Lista estacionesDeLinea = (Lista) this.mapeoLineas.get(nombreLinea);
+        if (estacionesDeLinea == null) {
+            System.err.println("Consulta: La línea '" + nombreLinea + "' asignada al tren " + id + " no existe.");
+            return ciudades; // Devuelve lista vacía
+        }
+
+        // 4. Recorrer las estaciones y recolectar ciudades sin repetir
+        for (int i = 1; i <= estacionesDeLinea.longitud(); i++) {
+            Estacion e = (Estacion) estacionesDeLinea.recuperar(i);
+            String ciudad = e.getCiudad();
+
+            // Si la ciudad no está en nuestra lista de ciudades, la agregamos
+            if (ciudades.localizar(ciudad) < 0) {
+                ciudades.insertar(ciudad, 1);
+            }
+        }
+        return ciudades;
+    }
+
+    /**
+     * Devuelve la información completa de una estación dado su nombre.
+     * (Implementa la Opción 7, parte A).
+     *
+     * @param nombre El nombre de la estación a buscar.
+     * @return el objeto Estacion si se encuentra, o null si no existe.
+     */
+    public Estacion consultarInfoEstacion(String nombre) {
+        Estacion estacion = (Estacion) this.estaciones.obtener(nombre);
+        if (estacion == null) {
+            System.err.println("Consulta: No se encontró la estación '" + nombre + "'.");
+        }
+        return estacion;
+    }
+
+    /**
+     * Devuelve una lista de todas las estaciones cuyo nombre comienza
+     * con una subcadena dada.
+     * (Implementa la Opción 7, parte B).
+     *
+     * @param prefijo El prefijo a buscar (ej. "Villa").
+     * @return una Lista de objetos Estacion que coinciden con el prefijo.
+     */
+    public Lista consultarEstacionesPorPrefijo(String prefijo) {
+        // Usamos el método listarRango del Diccionario (AVL).
+        // Para esto, definimos un rango de búsqueda [prefijo, prefijo + "ZZZZ"]
+        String claveInicio = prefijo;
+        String claveFin = prefijo + "ZZZZ";
+
+        Lista estacionesEnRango = this.estaciones.listarRango(claveInicio, claveFin);
+
+        if (estacionesEnRango.esVacia()) {
+            System.out.println("Consulta: No se encontraron estaciones que comiencen con '" + prefijo + "'.");
+        }
+
+        return estacionesEnRango;
+    }
+
+    /**
+     * Método auxiliar privado para obtener un objeto Estacion desde el
+     * diccionario. Simplifica el código en las consultas.
+     * @param nombre El nombre de la estación.
+     * @return El objeto Estacion, o null si no se encuentra.
+     */
+    private Estacion helperObtenerEstacion(String nombre) {
+        Estacion e = (Estacion) this.estaciones.obtener(nombre);
+        if (e == null) {
+            System.err.println("Error: No se pudo encontrar la estación '" + nombre + "'.");
+        }
+        return e;
+    }
+
+    /**
+     * Obtiene el camino entre dos estaciones que pase por MENOS estaciones.
+     * (Implementa la Opción 8, parte A).
+     *
+     * @param nombreEstA Nombre de la estación Origen.
+     * @param nombreEstB Nombre de la estación Destino.
+     * @return una Lista con el camino (objetos Estacion). Vacía si no hay camino.
+     */
+    public Lista obtenerCaminoMenosEstaciones(String nombreEstA, String nombreEstB) {
+        // 1. Obtener los objetos Estacion
+        Estacion eA = helperObtenerEstacion(nombreEstA);
+        Estacion eB = helperObtenerEstacion(nombreEstB);
+
+        // 2. Llamar al método del grafo (BFS)
+        if (eA != null && eB != null) {
+            return this.redDeRieles.caminoMasCorto(eA, eB);
+        }
+        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+    }
+
+    /**
+     * Obtiene el camino entre dos estaciones con la MENOR distancia en KM.
+     * (Implementa la Opción 8, parte B).
+     *
+     * @param nombreEstA Nombre de la estación Origen.
+     * @param nombreEstB Nombre de la estación Destino.
+     * @return una Lista con el camino (objetos Estacion). Vacía si no hay camino.
+     */
+    public Lista obtenerCaminoMenorDistancia(String nombreEstA, String nombreEstB) {
+        // 1. Obtener los objetos Estacion
+        Estacion eA = helperObtenerEstacion(nombreEstA);
+        Estacion eB = helperObtenerEstacion(nombreEstB);
+
+        // 2. Llamar al método del grafo (Dijkstra)
+        if (eA != null && eB != null) {
+            return this.redDeRieles.caminoMenorDistancia(eA, eB);
+        }
+        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+    }
+
+    /**
+     * Obtiene TODOS los caminos posibles entre dos estaciones sin pasar por una tercera.
+     * (Implementa la Opción 8, parte C - Opcional *).
+     *
+     * @param nombreEstA Nombre de la estación Origen.
+     * @param nombreEstB Nombre de la estación Destino.
+     * @param nombreEstC Nombre de la estación a Evitar.
+     * @return una Lista de Listas (cada sub-lista es un camino).
+     */
+    public Lista obtenerTodosLosCaminos(String nombreEstA, String nombreEstB, String nombreEstC) {
+        // 1. Obtener los objetos Estacion
+        Estacion eA = helperObtenerEstacion(nombreEstA);
+        Estacion eB = helperObtenerEstacion(nombreEstB);
+        Estacion eC = helperObtenerEstacion(nombreEstC);
+
+        // 2. Llamar al método del grafo (DFS/Backtracking)
+        if (eA != null && eB != null && eC != null) {
+            return this.redDeRieles.obtenerTodosCaminos(eA, eB, eC);
+        }
+        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+    }
+
+    /**
+     * Verifica si es posible viajar de A a B con un límite de KM.
+     * (Implementa la Opción 8, parte D - Opcional *).
+     *
+     * @param nombreEstA Nombre de la estación Origen.
+     * @param nombreEstB Nombre de la estación Destino.
+     * @param maxKm      La cantidad máxima de kilómetros permitidos.
+     * @return verdadero si el camino más corto es <= maxKm, falso en caso contrario.
+     */
+    public boolean esPosibleViajarEnKm(String nombreEstA, String nombreEstB, double maxKm) {
+        // 1. Obtener el camino más corto en distancia
+        Lista caminoMasCorto = obtenerCaminoMenorDistancia(nombreEstA, nombreEstB);
+
+        if (caminoMasCorto.esVacia()) {
+            System.err.println("Consulta: No existe ningún camino entre " + nombreEstA + " y " + nombreEstB + ".");
+            return false;
+        }
+
+        // 2. Calcular el costo de ese camino
+        double costo = this.redDeRieles.calcularCostoCamino(caminoMasCorto);
+
+        if (costo == -1.0) {
+            // Esto no debería pasar si Dijkstra funcionó, pero es un control
+            System.err.println("Error: El camino de Dijkstra es inválido.");
+            return false;
+        }
+
+        // 3. Comparar y devolver
+        boolean esPosible = (costo <= maxKm);
+        System.out.println("Consulta: El camino más corto es de " + costo + " km.");
+        System.out.println("  - Límite: " + maxKm + " km.");
+        System.out.println("  - ¿Es posible? " + (esPosible ? "Sí" : "No"));
+
+        return esPosible;
+    }
 
 }

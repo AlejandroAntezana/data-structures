@@ -1,5 +1,6 @@
 package conjuntistas.dinamicas;
-
+import lineales.dinamicas.ColaPrioridad;
+import lineales.dinamicas.CeldaCP;
 import lineales.dinamicas.Lista;
 import lineales.dinamicas.Cola; // Necesaria para listarEnAnchura y caminoMasCorto
 import conjuntistas.dinamicas.Diccionario; // Necesario para caminoMasCorto (BFS)
@@ -380,7 +381,7 @@ public class Grafo {
      * @param destino elemento del vértice destino.
      * @return una Lista con los elementos del camino más corto. Si no hay
      * camino, devuelve una lista vacía.
-            **/
+     */
     public Lista caminoMasCorto(Object origen, Object destino) {
         Lista camino = new Lista();
         NodoVert nodoO = this.ubicarVertice(origen);
@@ -390,54 +391,52 @@ public class Grafo {
             return camino; // Retorna lista vacía si no existen
         }
 
-        // Usamos un Diccionario para rastrear (vertice.elem -> predecesor)
-        Diccionario predecesores = new Diccionario();
+        // --- VERSIÓN CORREGIDA DE BFS ---
+        // Usamos una Lista para 'visitados' y un Diccionario para 'predecesores'
+
         Cola q = new Cola();
+        Diccionario predecesores = new Diccionario(); // (ElemComparable -> NodoVert)
+        Lista visitados = new Lista();               // (ElemComparable)
         boolean encontrado = false;
 
+        // 1. Encolar y marcar el origen
         q.poner(nodoO);
-
-        // --- CORRECCIÓN 1 ---
-        // Se castea el elemento 'Object' a 'Comparable' antes de insertarlo.
-        predecesores.insertar((Comparable) nodoO.getElem(), null); // Origen no tiene predecesor
+        visitados.insertar(origen, 1);
+        predecesores.insertar((Comparable) origen, null); // Origen no tiene predecesor
 
         while (!q.esVacia() && !encontrado) {
             NodoVert u = (NodoVert) q.obtenerFrente();
             q.sacar();
 
-            if (u == nodoD) {
-                encontrado = true;
-            } else {
-                NodoAdy ady = u.getPrimerAdy();
-                while (ady != null) {
-                    NodoVert v = ady.getVertice();
+            // 2. Explorar vecinos de 'u'
+            NodoAdy ady = u.getPrimerAdy();
+            while (ady != null && !encontrado) {
+                NodoVert v = ady.getVertice();
+                Object elemV = v.getElem();
 
-                    // --- CORRECCIÓN 2 ---
-                    // Se castea el elemento de 'v' a 'Comparable' para buscarlo.
-                    Comparable claveV = (Comparable) v.getElem();
+                // 3. Si 'v' no fue visitado (¡AQUÍ USAMOS LA LISTA CORREGIDA!)
+                if (visitados.localizar(elemV) < 0) {
 
-                    if (!predecesores.pertenece(claveV)) {
-                        predecesores.insertar(claveV, u); // Guardamos u como predecesor de v
-                        q.poner(v);
+                    // 4. Marcar como visitado y guardar predecesor
+                    visitados.insertar(elemV, 1);
+                    predecesores.insertar((Comparable) elemV, u);
+                    q.poner(v);
+
+                    // 5. Verificar si 'v' es el destino
+                    if (v == nodoD) {
+                        encontrado = true;
                     }
-                    ady = ady.getSigAdyacente();
                 }
+                ady = ady.getSigAdyacente();
             }
         }
 
+        // 6. Reconstruir el camino si fue encontrado
         if (encontrado) {
-            // Reconstruir el camino desde el destino hacia atrás
-            Object elemActual = destino;
-            while (elemActual != null) {
-                camino.insertar(elemActual, 1); // Insertar al frente de la lista
-
-                // --- CORRECCIÓN 3 ---
-                // Se castea el elemento 'Object' a 'Comparable' para obtenerlo.
-                NodoVert predecesor = (NodoVert) predecesores.obtener((Comparable) elemActual);
-
-                elemActual = (predecesor != null) ? predecesor.getElem() : null;
-            }
+            // Usamos el método auxiliar que ya teníamos para Dijkstra
+            camino = reconstruirCamino(predecesores, origen, destino);
         }
+
         return camino;
     }
 
@@ -633,4 +632,258 @@ public class Grafo {
         }
         return exito;
     }
+
+    /**
+     * Busca el camino de menor costo (distancia) desde un vértice origen
+     * a un vértice destino, utilizando el algoritmo de Dijkstra con una
+     * Cola de Prioridad (Min-Heap).
+     * Eficiencia: O(E log V).
+     *
+     * @param origen  el elemento del vértice origen (debe ser Comparable).
+     * @param destino el elemento del vértice destino (debe ser Comparable).
+     * @return una Lista con el camino de menor distancia. Si no hay
+     * camino, devuelve una lista vacía.
+     */
+    public Lista caminoMenorDistancia(Object origen, Object destino) {
+        Lista camino = new Lista();
+        NodoVert nodoO = this.ubicarVertice(origen);
+        NodoVert nodoD = this.ubicarVertice(destino);
+
+        if (nodoO == null || nodoD == null) {
+            return camino; // Origen o destino no existen
+        }
+
+        // --- Inicialización de Dijkstra ---
+        Diccionario distancias = new Diccionario();    // (ElemComparable -> Double)
+        Diccionario predecesores = new Diccionario();  // (ElemComparable -> NodoVert)
+        ColaPrioridad pq = new ColaPrioridad();
+
+        // 1. Inicializar todas las distancias a "infinito"
+        NodoVert aux = this.inicio;
+        while (aux != null) {
+            Comparable elem = (Comparable) aux.getElem();
+            distancias.insertar(elem, Double.MAX_VALUE);
+            predecesores.insertar(elem, null);
+            aux = aux.getSigVertice();
+        }
+
+        // 2. Distancia al origen es 0 y lo encolamos
+        distancias.insertar((Comparable) origen, 0.0);
+        pq.insertar(nodoO, 0.0); // (Elemento: NodoVert, Prioridad: 0.0)
+
+        // --- Bucle principal de Dijkstra ---
+        while (!pq.esVacia()) {
+
+            // 3. Extraer el vértice 'u' con menor distancia (prioridad)
+            CeldaCP celdaMin = pq.obtenerFrenteCelda();
+            pq.eliminarFrente();
+
+            NodoVert u = (NodoVert) celdaMin.getElemento();
+            double distPrioU = celdaMin.getPrioridad(); // Dist. con la que se encoló
+            Comparable elemU = (Comparable) u.getElem();
+
+            // 4. Obtener la distancia "oficial" actual de 'u'
+            double distActualU = (Double) distancias.obtener(elemU);
+
+            // 5. Si la prioridad de la celda es mayor a la distancia ya
+            //    guardada, es una celda "caduca". La ignoramos.
+            if (distPrioU > distActualU) {
+                continue;
+            }
+
+            // 6. Optimización: Si 'u' es el destino, terminamos
+            if (u == nodoD) {
+                break;
+            }
+
+            // 7. Relajar arcos: revisar adyacentes 'v' de 'u'
+            NodoAdy ady = u.getPrimerAdy();
+            while (ady != null) {
+                NodoVert v = ady.getVertice();
+                Comparable elemV = (Comparable) v.getElem();
+                double pesoUV = ady.getEtiqueta();
+
+                double nuevaDistV = distActualU + pesoUV;
+                double distActualV = (Double) distancias.obtener(elemV);
+
+                // 8. Si encontramos un camino más corto a 'v'
+                if (nuevaDistV < distActualV) {
+                    // Actualizamos la distancia
+                    distancias.insertar(elemV, nuevaDistV);
+                    // Guardamos a 'u' como su predecesor
+                    predecesores.insertar(elemV, u);
+                    // (Re)insertamos a 'v' en la cola con la nueva prioridad
+                    pq.insertar(v, nuevaDistV);
+                }
+                ady = ady.getSigAdyacente();
+            }
+        }
+
+        // --- Reconstrucción del camino ---
+        // Verificamos si se encontró un camino (si la distancia al destino cambió)
+        if ((Double) distancias.obtener((Comparable) destino) != Double.MAX_VALUE) {
+            camino = reconstruirCamino(predecesores, origen, destino);
+        }
+
+        return camino;
+    }
+
+    /**
+     * Auxiliar (privado) para reconstruir el camino desde el mapa de predecesores
+     * generado por Dijkstra o BFS.
+     *
+     * @param predecesores El mapa (clave: Elem, dato: NodoVert)
+     * @param origen       El elemento de origen
+     * @param destino      El elemento de destino
+     * @return Una Lista con el camino (origen al frente).
+     */
+    private Lista reconstruirCamino(Diccionario predecesores, Object origen, Object destino) {
+        Lista camino = new Lista();
+        Object elemActual = destino;
+
+        // Iteramos hacia atrás desde el destino
+        while (elemActual != null) {
+            camino.insertar(elemActual, 1); // Insertar al frente de la lista
+
+            if (elemActual.equals(origen)) {
+                elemActual = null; // Llegamos al origen, terminamos
+            } else {
+                // Buscamos el predecesor en el mapa
+                NodoVert predecesor = (NodoVert) predecesores.obtener((Comparable) elemActual);
+                // El siguiente elemento a procesar es el elemento del predecesor
+                elemActual = (predecesor != null) ? predecesor.getElem() : null;
+            }
+        }
+        return camino;
+    }
+
+    /**
+     * Devuelve una lista con TODOS los caminos posibles entre origen y destino
+     * que NO pasen por el vértice 'evitar'.
+     * Utiliza un algoritmo de Backtracking (DFS).
+     *
+     * @param origen  el elemento del vértice origen.
+     * @param destino el elemento del vértice destino.
+     * @param evitar  el elemento del vértice que no debe ser visitado.
+     * @return una Lista que contiene otras Listas (cada una es un camino).
+     */
+    public Lista obtenerTodosCaminos(Object origen, Object destino, Object evitar) {
+        Lista listaDeCaminos = new Lista();
+        NodoVert nodoO = this.ubicarVertice(origen);
+        NodoVert nodoD = this.ubicarVertice(destino);
+        NodoVert nodoE = this.ubicarVertice(evitar);
+
+        if (nodoO == null || nodoD == null || nodoE == null) {
+            System.err.println("Error: Origen, destino o vértice a evitar no existen.");
+            return listaDeCaminos; // Devuelve lista vacía
+        }
+
+        // 'visitados' se usa para evitar ciclos en un MISMO camino
+        Lista visitados = new Lista();
+
+        // 'caminoActual' almacena los nodos del camino que se está explorando
+        Lista caminoActual = new Lista();
+
+        // Marcamos el vértice a evitar como "ya visitado" desde el inicio
+        // para que la recursión nunca entre en él.
+        visitados.insertar(evitar, 1);
+
+        // Inicia la búsqueda recursiva
+        todosCaminosAux(nodoO, destino, visitados, caminoActual, listaDeCaminos);
+
+        return listaDeCaminos;
+    }
+
+    /**
+     * Método auxiliar recursivo (DFS/Backtracking) para encontrar todos los caminos.
+     *
+     * @param n              El nodo actual.
+     * @param dest           El elemento destino que buscamos.
+     * @param visitados      La lista de nodos visitados EN ESTE CAMINO (para evitar ciclos).
+     * @param caminoActual   La lista (pasada por referencia) que construye el camino actual.
+     * @param listaDeCaminos La lista (pasada por referencia) donde se acumulan los caminos encontrados.
+     */
+    private void todosCaminosAux(NodoVert n, Object dest, Lista visitados, Lista caminoActual, Lista listaDeCaminos) {
+
+        // 1. Agregamos el nodo actual al camino y lo marcamos como visitado
+        caminoActual.insertar(n.getElem(), caminoActual.longitud() + 1);
+        visitados.insertar(n.getElem(), 1); // Posición 1 es la más rápida
+
+        // 2. Verificamos si llegamos al destino
+        if (n.getElem().equals(dest)) {
+            listaDeCaminos.insertar(caminoActual.clone(), 1);
+        } else {
+            // 3. Si no es el destino, exploramos adyacentes
+            NodoAdy ady = n.getPrimerAdy();
+            while (ady != null) {
+                if (visitados.localizar(ady.getVertice().getElem()) < 0) {
+                    todosCaminosAux(ady.getVertice(), dest, visitados, caminoActual, listaDeCaminos);
+                }
+                ady = ady.getSigAdyacente();
+            }
+        }
+
+        // 4. BACKTRACKING: (Asegúrate de tener estas dos líneas)
+        // Quitamos el nodo actual del camino y de visitados
+        // para poder explorar otras rutas.
+        caminoActual.eliminar(caminoActual.longitud());
+        visitados.eliminar(visitados.localizar(n.getElem()));
+    }
+
+    /**
+     * Calcula el costo total (distancia en km) de un camino dado.
+     * Un camino es una Lista de elementos de vértice.
+     *
+     * @param camino La Lista (camino) a evaluar.
+     * @return la suma de las etiquetas (distancias) del camino, o -1.0
+     * si el camino es inválido o no se encuentra un arco.
+     */
+    public double calcularCostoCamino(Lista camino) {
+        double costoTotal = 0.0;
+
+        if (camino == null || camino.longitud() < 2) {
+            return 0.0; // Un camino de 0 o 1 nodo tiene costo 0
+        }
+
+        for (int i = 1; i < camino.longitud(); i++) {
+            Object elemOrigen = camino.recuperar(i);
+            Object elemDestino = camino.recuperar(i + 1);
+
+            // Buscamos el arco y su etiqueta
+            double etiqueta = obtenerEtiqueta(elemOrigen, elemDestino);
+
+            if (etiqueta == -1.0) {
+                // Error: El camino es inválido, no existe un arco
+                System.err.println("Error al calcular costo: No existe riel entre "
+                        + elemOrigen + " y " + elemDestino);
+                return -1.0;
+            }
+            costoTotal += etiqueta;
+        }
+        return costoTotal;
+    }
+
+    /**
+     * Método auxiliar privado para obtener la etiqueta de un arco en un sentido.
+     * @return la etiqueta (double) si se encuentra, o -1.0 si no existe.
+     */
+    private double obtenerEtiqueta(Object origen, Object destino) {
+        NodoVert nodoO = this.ubicarVertice(origen);
+        NodoVert nodoD = this.ubicarVertice(destino);
+        double etiqueta = -1.0;
+
+        if (nodoO != null && nodoD != null) {
+            NodoAdy ady = nodoO.getPrimerAdy();
+            boolean encontrado = false;
+            while (ady != null && !encontrado) {
+                if (ady.getVertice() == nodoD) {
+                    etiqueta = ady.getEtiqueta();
+                    encontrado = true;
+                }
+                ady = ady.getSigAdyacente();
+            }
+        }
+        return etiqueta;
+    }
+
 }
