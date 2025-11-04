@@ -3,7 +3,8 @@ package dominio;
 import conjuntistas.dinamicas.Diccionario;
 import conjuntistas.dinamicas.Grafo;
 import lineales.dinamicas.Lista;
-import lineales.dinamicas.Cola;
+import java.util.Scanner;
+import java.util.InputMismatchException;
 
 // Para el Mapeo de Líneas, usamos el HashMap de Java como pide el enunciado
 import java.util.HashMap;
@@ -86,15 +87,447 @@ public class TrenesSA {
     }
 
     /**
-     * Punto de entrada principal para ejecutar el menú de opciones.
-     * (Este método lo llenaremos después)
+     * Muestra el menú principal interactivo y gestiona la entrada del usuario.
      */
     public void menu() {
-        System.out.println("Bienvenido al sistema dominio.TrenesSA");
-        // Aquí irá la lógica del menú (Scanner, switch, etc.)
+        Scanner scanner = new Scanner(System.in);
+        boolean salir = false;
 
-        // Al finalizar el programa, cerramos el log.
+        System.out.println("=======================================================");
+        System.out.println("     BIENVENIDO AL SISTEMA DE GESTIÓN TRENESSA     ");
+        System.out.println("=======================================================");
+
+        while (!salir) {
+            System.out.println("\n--- MENÚ PRINCIPAL ---");
+            System.out.println("1. Cargar sistema desde archivo");
+            System.out.println("2. ABM de Trenes");
+            System.out.println("3. ABM de Estaciones");
+            System.out.println("4. ABM de Líneas");
+            System.out.println("5. ABM de Red de Rieles");
+            System.out.println("6. Consultas sobre Trenes");
+            System.out.println("7. Consultas sobre Estaciones");
+            System.out.println("8. Consultas sobre Viajes");
+            System.out.println("9. Mostrar estado completo del sistema");
+            System.out.println("0. Salir del sistema");
+            System.out.print("Seleccione una opción: ");
+
+            int opcion = leerInt(scanner);
+
+            try {
+                switch (opcion) {
+                    case 1:
+                        menuCargaInicial(scanner);
+                        break;
+                    case 2:
+                        menuABMTrenes(scanner);
+                        break;
+                    case 3:
+                        menuABMEstaciones(scanner);
+                        break;
+                    case 4:
+                        menuABMLineas(scanner);
+                        break;
+                    case 5:
+                        menuABMRieles(scanner);
+                        break;
+                    case 6:
+                        menuConsultasTrenes(scanner);
+                        break;
+                    case 7:
+                        menuConsultasEstaciones(scanner);
+                        break;
+                    case 8:
+                        menuConsultasViajes(scanner);
+                        break;
+                    case 9:
+                        mostrarSistema();
+                        break;
+                    case 0:
+                        salir = true;
+                        break;
+                    default:
+                        System.err.println("Opción no válida. Intente de nuevo.");
+                        break;
+                }
+            } catch (Exception e) {
+                System.err.println("Ha ocurrido un error inesperado: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Guardando estado del sistema en el log...");
+        logEstadoSistema();
+        System.out.println("Cerrando el sistema. ¡Hasta luego!");
         cerrarLog();
+        scanner.close();
+    }
+
+    // --- Métodos Auxiliares del Menú (Privados) ---
+
+    private void menuCargaInicial(Scanner scanner) {
+        System.out.print("Ingrese la ruta del archivo de carga (ej. datos.txt): ");
+        String ruta = leerString(scanner);
+        cargarSistemaDesdeArchivo(ruta);
+    }
+
+    private void menuABMTrenes(Scanner scanner) {
+        System.out.println("\n--- ABM Trenes ---");
+        System.out.println("1. Alta de Tren");
+        System.out.println("2. Baja de Tren");
+        System.out.println("3. Modificación de Tren");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        int id;
+        switch (opcion) {
+            case 1:
+                System.out.print("ID (numérico): ");
+                id = leerInt(scanner);
+                System.out.print("Propulsión (diesel, electrico, etc.): ");
+                String prop = leerString(scanner);
+                System.out.print("Vagones de Pasajeros: ");
+                int vagPas = leerInt(scanner);
+                System.out.print("Vagones de Carga: ");
+                int vagCar = leerInt(scanner);
+                System.out.print("Línea asignada (o 'libre'): ");
+                String lin = leerString(scanner);
+                if (altaTren(id, prop, vagPas, vagCar, lin)) {
+                    System.out.println("Tren dado de alta exitosamente.");
+                }
+                break;
+            case 2:
+                System.out.print("ID del tren a dar de baja: ");
+                id = leerInt(scanner);
+                if (bajaTren(id)) {
+                    System.out.println("Tren dado de baja exitosamente.");
+                }
+                break;
+            case 3:
+                System.out.print("ID del tren a modificar: ");
+                id = leerInt(scanner);
+                System.out.print("NUEVA Propulsión: ");
+                String nProp = leerString(scanner);
+                System.out.print("NUEVOS Vagones de Pasajeros: ");
+                int nVagPas = leerInt(scanner);
+                System.out.print("NUEVOS Vagones de Carga: ");
+                int nVagCar = leerInt(scanner);
+                System.out.print("NUEVA Línea asignada: ");
+                String nLin = leerString(scanner);
+                if (modificarTren(id, nProp, nVagPas, nVagCar, nLin)) {
+                    System.out.println("Tren modificado exitosamente.");
+                }
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuABMEstaciones(Scanner scanner) {
+        System.out.println("\n--- ABM Estaciones ---");
+        System.out.println("1. Alta de Estación");
+        System.out.println("2. Baja de Estación");
+        System.out.println("3. Modificación de Estación");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        String nombre;
+        switch (opcion) {
+            case 1:
+                System.out.print("Nombre (Clave Única): ");
+                nombre = leerString(scanner);
+                System.out.print("Calle: ");
+                String calle = leerString(scanner);
+                System.out.print("Número: ");
+                int num = leerInt(scanner);
+                System.out.print("Ciudad: ");
+                String ciu = leerString(scanner);
+                System.out.print("Código Postal: ");
+                String cp = leerString(scanner);
+                System.out.print("Cantidad de Vías: ");
+                int vias = leerInt(scanner);
+                System.out.print("Cantidad de Plataformas: ");
+                int plat = leerInt(scanner);
+                if (altaEstacion(nombre, calle, num, ciu, cp, vias, plat)) {
+                    System.out.println("Estación dada de alta exitosamente.");
+                }
+                break;
+            case 2:
+                System.out.print("Nombre de la estación a dar de baja: ");
+                nombre = leerString(scanner);
+                if (bajaEstacion(nombre)) {
+                    System.out.println("Estación dada de baja exitosamente.");
+                }
+                break;
+            case 3:
+                System.out.print("Nombre de la estación a modificar: ");
+                nombre = leerString(scanner);
+                System.out.print("NUEVA Calle: ");
+                String nCalle = leerString(scanner);
+                System.out.print("NUEVO Número: ");
+                int nNum = leerInt(scanner);
+                System.out.print("NUEVA Ciudad: ");
+                String nCiu = leerString(scanner);
+                System.out.print("NUEVO Código Postal: ");
+                String nCp = leerString(scanner);
+                System.out.print("NUEVA Cant. de Vías: ");
+                int nVias = leerInt(scanner);
+                System.out.print("NUEVA Cant. de Plataformas: ");
+                int nPlat = leerInt(scanner);
+                if (modificarEstacion(nombre, nCalle, nNum, nCiu, nCp, nVias, nPlat)) {
+                    System.out.println("Estación modificada exitosamente.");
+                }
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuABMLineas(Scanner scanner) {
+        System.out.println("\n--- ABM Líneas ---");
+        System.out.println("1. Crear Línea (vacía)");
+        System.out.println("2. Eliminar Línea");
+        System.out.println("3. Agregar Estación a Línea");
+        System.out.println("4. Quitar Estación de Línea");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        String nomLin, nomEst;
+        switch (opcion) {
+            case 1:
+                System.out.print("Nombre de la nueva línea: ");
+                nomLin = leerString(scanner);
+                if (crearLinea(nomLin)) System.out.println("Línea creada.");
+                break;
+            case 2:
+                System.out.print("Nombre de la línea a eliminar: ");
+                nomLin = leerString(scanner);
+                if (eliminarLinea(nomLin)) System.out.println("Línea eliminada.");
+                break;
+            case 3:
+                System.out.print("Nombre de la línea: ");
+                nomLin = leerString(scanner);
+                System.out.print("Nombre de la estación a agregar: ");
+                nomEst = leerString(scanner);
+                if (agregarEstacionALinea(nomLin, nomEst)) System.out.println("Estación agregada.");
+                break;
+            case 4:
+                System.out.print("Nombre de la línea: ");
+                nomLin = leerString(scanner);
+                System.out.print("Nombre de la estación a quitar: ");
+                nomEst = leerString(scanner);
+                if (quitarEstacionDeLinea(nomLin, nomEst)) System.out.println("Estación quitada.");
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuABMRieles(Scanner scanner) {
+        System.out.println("\n--- ABM Rieles ---");
+        System.out.println("1. Alta de Riel");
+        System.out.println("2. Baja de Riel");
+        System.out.println("3. Modificación de Riel (Distancia)");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        String est1, est2;
+        switch (opcion) {
+            case 1:
+                System.out.print("Nombre Estación A: ");
+                est1 = leerString(scanner);
+                System.out.print("Nombre Estación B: ");
+                est2 = leerString(scanner);
+                System.out.print("Distancia (km) (ej. 450.5): ");
+                double km = leerDouble(scanner);
+                if (altaRiel(est1, est2, km)) System.out.println("Riel creado.");
+                break;
+            case 2:
+                System.out.print("Nombre Estación A: ");
+                est1 = leerString(scanner);
+                System.out.print("Nombre Estación B: ");
+                est2 = leerString(scanner);
+                if (bajaRiel(est1, est2)) System.out.println("Riel eliminado.");
+                break;
+            case 3:
+                System.out.print("Nombre Estación A: ");
+                est1 = leerString(scanner);
+                System.out.print("Nombre Estación B: ");
+                est2 = leerString(scanner);
+                System.out.print("NUEVA Distancia (km): ");
+                double nKm = leerDouble(scanner);
+                if (modificarRiel(est1, est2, nKm)) System.out.println("Riel modificado.");
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuConsultasTrenes(Scanner scanner) {
+        System.out.println("\n--- Consultas de Trenes ---");
+        System.out.println("1. Mostrar información de un tren");
+        System.out.println("2. Mostrar ciudades que visita un tren");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        int id;
+        switch (opcion) {
+            case 1:
+                System.out.print("ID del tren: ");
+                id = leerInt(scanner);
+                Tren t = consultarInfoTren(id);
+                if (t != null) System.out.println(t.toString());
+                break;
+            case 2:
+                System.out.print("ID del tren: ");
+                id = leerInt(scanner);
+                Lista ciudades = consultarCiudadesPorTren(id);
+                System.out.println("Ciudades (sin repetir): " + ciudades.toString());
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuConsultasEstaciones(Scanner scanner) {
+        System.out.println("\n--- Consultas de Estaciones ---");
+        System.out.println("1. Mostrar información de una estación");
+        System.out.println("2. Listar estaciones por prefijo");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        switch (opcion) {
+            case 1:
+                System.out.print("Nombre de la estación: ");
+                String nom = leerString(scanner);
+                Estacion e = consultarInfoEstacion(nom);
+                if (e != null) System.out.println(e.toString());
+                break;
+            case 2:
+                System.out.print("Prefijo a buscar (ej. 'Cor'): ");
+                String pref = leerString(scanner);
+                Lista estaciones = consultarEstacionesPorPrefijo(pref);
+                System.out.println("Estaciones encontradas: " + estaciones.toString());
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    private void menuConsultasViajes(Scanner scanner) {
+        System.out.println("\n--- Consultas de Viajes ---");
+        System.out.println("1. Camino con MENOS ESTACIONES");
+        System.out.println("2. Camino con MENOR DISTANCIA (KM)");
+        System.out.println("3. Todos los caminos (evitando una estación)");
+        System.out.println("4. Verificar viaje por KM máximos");
+        System.out.print("Seleccione: ");
+        int opcion = leerInt(scanner);
+
+        String estA, estB, estC;
+        switch (opcion) {
+            case 1:
+                System.out.print("Estación Origen: ");
+                estA = leerString(scanner);
+                System.out.print("Estación Destino: ");
+                estB = leerString(scanner);
+                System.out.println("Calculando...");
+                Lista cBFS = obtenerCaminoMenosEstaciones(estA, estB);
+                System.out.println("Camino con menos paradas: " + cBFS.toString());
+                break;
+            case 2:
+                System.out.print("Estación Origen: ");
+                estA = leerString(scanner);
+                System.out.print("Estación Destino: ");
+                estB = leerString(scanner);
+                System.out.println("Calculando...");
+                Lista cDijkstra = obtenerCaminoMenorDistancia(estA, estB);
+                System.out.println("Camino más corto (km): " + cDijkstra.toString());
+                break;
+            case 3:
+                System.out.print("Estación Origen: ");
+                estA = leerString(scanner);
+                System.out.print("Estación Destino: ");
+                estB = leerString(scanner);
+                System.out.print("Estación a EVITAR: ");
+                estC = leerString(scanner);
+                System.out.println("Calculando...");
+                Lista todos = obtenerTodosLosCaminos(estA, estB, estC);
+                System.out.println("Caminos encontrados: " + todos.toString());
+                break;
+            case 4:
+                System.out.print("Estación Origen: ");
+                estA = leerString(scanner);
+                System.out.print("Estación Destino: ");
+                estB = leerString(scanner);
+                System.out.print("Límite de KM (ej. 500.0): ");
+                double km = leerDouble(scanner);
+                System.out.println("Calculando...");
+                // El método esPosibleViajarEnKm ya imprime el resultado
+                esPosibleViajarEnKm(estA, estB, km);
+                break;
+            default:
+                System.err.println("Opción no válida.");
+                break;
+        }
+    }
+
+    // --- Métodos de Ayuda para Lectura Segura ---
+
+    /**
+     * Lee un String de la consola (línea completa), asegurando que no esté vacío.
+     */
+    private String leerString(Scanner scanner) {
+        String entrada = "";
+        while (entrada.trim().isEmpty()) {
+            entrada = scanner.nextLine();
+            if (entrada.trim().isEmpty()) {
+                System.err.print("Error: La entrada no puede estar vacía. Intente de nuevo: ");
+            }
+        }
+        return entrada;
+    }
+
+    /**
+     * Lee un int de la consola, con validación de tipo.
+     */
+    private int leerInt(Scanner scanner) {
+        int valor = -1;
+        boolean valido = false;
+        while (!valido) {
+            try {
+                valor = scanner.nextInt();
+                valido = true;
+            } catch (InputMismatchException e) {
+                System.err.print("Error: Ingrese un número entero. Intente de nuevo: ");
+                scanner.next(); // Limpiar el buffer del scanner
+            }
+        }
+        scanner.nextLine();
+        return valor;
+    }
+
+    /**
+     * Lee un double de la consola, con validación de tipo.
+     */
+    private double leerDouble(Scanner scanner) {
+        double valor = -1.0;
+        boolean valido = false;
+        while (!valido) {
+            try {
+                valor = scanner.nextDouble();
+                valido = true;
+            } catch (InputMismatchException e) {
+                System.err.print("Error: Ingrese un número (ej. 123.4). Intente de nuevo: ");
+                scanner.next(); // Limpiar el buffer del scanner
+            }
+        }
+        scanner.nextLine();
+        return valor;
     }
 
     /**
