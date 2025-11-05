@@ -81,7 +81,7 @@ public class TrenesSA {
             this.logWriter = new PrintWriter(new FileWriter(RUTA_LOG, true), true);
             logWriter.println("--- INICIO DE SESIÓN: " + new java.util.Date().toString() + " ---");
         } catch (IOException e) {
-            System.err.println("ERROR: No se pudo abrir el archivo de log.");
+            System.out.println("ERROR: No se pudo abrir el archivo de log.");
             e.printStackTrace();
         }
     }
@@ -146,11 +146,11 @@ public class TrenesSA {
                         salir = true;
                         break;
                     default:
-                        System.err.println("Opción no válida. Intente de nuevo.");
+                        System.out.println("Opción no válida. Intente de nuevo.");
                         break;
                 }
             } catch (Exception e) {
-                System.err.println("Ha ocurrido un error inesperado: " + e.getMessage());
+                System.out.println("Ha ocurrido un error inesperado: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -279,7 +279,7 @@ public class TrenesSA {
                 }
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -320,7 +320,7 @@ public class TrenesSA {
                 if (quitarEstacionDeLinea(nomLin, nomEst)) System.out.println("Estación quitada.");
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -361,7 +361,7 @@ public class TrenesSA {
                 if (modificarRiel(est1, est2, nKm)) System.out.println("Riel modificado.");
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -388,7 +388,7 @@ public class TrenesSA {
                 System.out.println("Ciudades (sin repetir): " + ciudades.toString());
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -414,7 +414,7 @@ public class TrenesSA {
                 System.out.println("Estaciones encontradas: " + estaciones.toString());
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -471,7 +471,7 @@ public class TrenesSA {
                 esPosibleViajarEnKm(estA, estB, km);
                 break;
             default:
-                System.err.println("Opción no válida.");
+                System.out.println("Opción no válida.");
                 break;
         }
     }
@@ -486,7 +486,7 @@ public class TrenesSA {
         while (entrada.trim().isEmpty()) {
             entrada = scanner.nextLine();
             if (entrada.trim().isEmpty()) {
-                System.err.print("Error: La entrada no puede estar vacía. Intente de nuevo: ");
+                System.out.print("Error: La entrada no puede estar vacía. Intente de nuevo: ");
             }
         }
         return entrada;
@@ -503,7 +503,7 @@ public class TrenesSA {
                 valor = scanner.nextInt();
                 valido = true;
             } catch (InputMismatchException e) {
-                System.err.print("Error: Ingrese un número entero. Intente de nuevo: ");
+                System.out.print("Error: Ingrese un número entero. Intente de nuevo: ");
                 scanner.next(); // Limpiar el buffer del scanner
             }
         }
@@ -522,7 +522,7 @@ public class TrenesSA {
                 valor = scanner.nextDouble();
                 valido = true;
             } catch (InputMismatchException e) {
-                System.err.print("Error: Ingrese un número (ej. 123.4). Intente de nuevo: ");
+                System.out.print("Error: Ingrese un número (ej. 123.4). Intente de nuevo: ");
                 scanner.next(); // Limpiar el buffer del scanner
             }
         }
@@ -761,7 +761,7 @@ public class TrenesSA {
                 // Si existe, la agregamos al final de la lista
                 estacionesDeLinea.insertar(e, estacionesDeLinea.longitud() + 1);
             } else {
-                System.err.println("Error de consistencia: Estación '" + nombreEst
+                System.out.println("Error de consistencia: Estación '" + nombreEst
                         + "' no encontrada. No se agregará a la línea '" + nombreLinea + "'.");
             }
         }
@@ -845,7 +845,7 @@ public class TrenesSA {
         if (exitoDic && exitoGrafo) {
             escribirLog("ALTA Estación: " + nombre);
         } else if (!exitoDic) {
-            System.err.println("Error en ALTA: La estación '" + nombre + "' ya existe.");
+            System.out.println("Error en ALTA: La estación '" + nombre + "' ya existe.");
         }
 
         return exitoDic && exitoGrafo;
@@ -863,7 +863,7 @@ public class TrenesSA {
         Estacion estacionAEliminar = (Estacion) this.estaciones.obtener(nombre);
 
         if (estacionAEliminar == null) {
-            System.err.println("Error en BAJA: No se encontró la estación '" + nombre + "'.");
+            System.out.println("Error en BAJA: No se encontró la estación '" + nombre + "'.");
             return false;
         }
 
@@ -908,7 +908,7 @@ public class TrenesSA {
         Estacion estacionAModificar = (Estacion) this.estaciones.obtener(nombre);
 
         if (estacionAModificar == null) {
-            System.err.println("Error en MODIFICACIÓN: No se encontró la estación '" + nombre + "'.");
+            System.out.println("Error en MODIFICACIÓN: No se encontró la estación '" + nombre + "'.");
             return false;
         }
 
@@ -940,15 +940,15 @@ public class TrenesSA {
 
         // 2. Validar que ambas estaciones existan
         if (e1 == null || e2 == null) {
-            System.err.println("Error en ALTA Riel: Una o ambas estaciones no existen.");
-            System.err.println("  - Estación 1 ('" + nombreEst1 + "'): " + (e1 != null ? "Encontrada" : "NO Encontrada"));
-            System.err.println("  - Estación 2 ('" + nombreEst2 + "'): " + (e2 != null ? "Encontrada" : "NO Encontrada"));
+            System.out.println("Error en ALTA Riel: Una o ambas estaciones no existen.");
+            System.out.println("  - Estación 1 ('" + nombreEst1 + "'): " + (e1 != null ? "Encontrada" : "NO Encontrada"));
+            System.out.println("  - Estación 2 ('" + nombreEst2 + "'): " + (e2 != null ? "Encontrada" : "NO Encontrada"));
             return false;
         }
 
         // 3. Validar que la distancia sea positiva
         if (km <= 0) {
-            System.err.println("Error en ALTA Riel: La distancia debe ser mayor a 0 km.");
+            System.out.println("Error en ALTA Riel: La distancia debe ser mayor a 0 km.");
             return false;
         }
 
@@ -981,7 +981,7 @@ public class TrenesSA {
 
         // 2. Validar que ambas estaciones existan
         if (e1 == null || e2 == null) {
-            System.err.println("Error en BAJA Riel: Una o ambas estaciones no existen.");
+            System.out.println("Error en BAJA Riel: Una o ambas estaciones no existen.");
             return false;
         }
 
@@ -1015,13 +1015,13 @@ public class TrenesSA {
 
         // 2. Validar que ambas estaciones existan
         if (e1 == null || e2 == null) {
-            System.err.println("Error en MODIFICAR Riel: Una o ambas estaciones no existen.");
+            System.out.println("Error en MODIFICAR Riel: Una o ambas estaciones no existen.");
             return false;
         }
 
         // 3. Validar que la nueva distancia sea positiva
         if (nuevaDistanciaKm <= 0) {
-            System.err.println("Error en MODIFICAR Riel: La distancia debe ser mayor a 0 km.");
+            System.out.println("Error en MODIFICAR Riel: La distancia debe ser mayor a 0 km.");
             return false;
         }
 
@@ -1034,7 +1034,7 @@ public class TrenesSA {
                     ". Nueva distancia: " + nuevaDistanciaKm + " km");
         } else {
             escribirLog("MODIFICACIÓN Riel fallida (el riel no existe): " + nombreEst1 + " <-> " + nombreEst2);
-            System.err.println("Error en MODIFICAR Riel: No se encontró un riel entre " +
+            System.out.println("Error en MODIFICAR Riel: No se encontró un riel entre " +
                     nombreEst1 + " y " + nombreEst2 + ".");
         }
 
@@ -1055,7 +1055,7 @@ public class TrenesSA {
 
         // 1. Validar que el ID sea positivo
         if (id <= 0) {
-            System.err.println("Error en ALTA Tren: El ID debe ser un número positivo.");
+            System.out.println("Error en ALTA Tren: El ID debe ser un número positivo.");
             return false;
         }
 
@@ -1069,7 +1069,7 @@ public class TrenesSA {
         if (exito) {
             escribirLog("ALTA Tren: ID " + id);
         } else {
-            System.err.println("Error en ALTA Tren: El ID " + id + " ya existe.");
+            System.out.println("Error en ALTA Tren: El ID " + id + " ya existe.");
         }
 
         return exito;
@@ -1090,7 +1090,7 @@ public class TrenesSA {
         if (exito) {
             escribirLog("BAJA Tren: ID " + id);
         } else {
-            System.err.println("Error en BAJA Tren: No se encontró un tren con ID " + id + ".");
+            System.out.println("Error en BAJA Tren: No se encontró un tren con ID " + id + ".");
         }
 
         return exito;
@@ -1113,7 +1113,7 @@ public class TrenesSA {
         Tren trenAModificar = (Tren) this.trenes.obtener(id);
 
         if (trenAModificar == null) {
-            System.err.println("Error en MODIFICACIÓN Tren: No se encontró un tren con ID " + id + ".");
+            System.out.println("Error en MODIFICACIÓN Tren: No se encontró un tren con ID " + id + ".");
             return false;
         }
 
@@ -1139,7 +1139,7 @@ public class TrenesSA {
         boolean exito = false;
         // 1. Verificar si la línea ya existe en el HashMap
         if (this.mapeoLineas.containsKey(nombreLinea)) {
-            System.err.println("Error en ALTA Línea: La línea '" + nombreLinea + "' ya existe.");
+            System.out.println("Error en ALTA Línea: La línea '" + nombreLinea + "' ya existe.");
         } else {
             // 2. Si no existe, crear una nueva lista vacía para ella
             lineales.dinamicas.Lista nuevaListaEstaciones = new lineales.dinamicas.Lista();
@@ -1166,7 +1166,7 @@ public class TrenesSA {
             escribirLog("BAJA Línea: Se eliminó la línea '" + nombreLinea + "'.");
             return true;
         } else {
-            System.err.println("Error en BAJA Línea: No se encontró la línea '" + nombreLinea + "'.");
+            System.out.println("Error en BAJA Línea: No se encontró la línea '" + nombreLinea + "'.");
             return false;
         }
     }
@@ -1184,21 +1184,21 @@ public class TrenesSA {
         // 1. Obtener la lista de estaciones de la línea
         Lista lista = (lineales.dinamicas.Lista) this.mapeoLineas.get(nombreLinea);
         if (lista == null) {
-            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
+            System.out.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
             return false;
         }
 
         // 2. Obtener el objeto Estacion
         Estacion estacion = (Estacion) this.estaciones.obtener(nombreEstacion);
         if (estacion == null) {
-            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la estación '" + nombreEstacion + "'.");
+            System.out.println("Error en MODIFICACIÓN Línea: No se encontró la estación '" + nombreEstacion + "'.");
             return false;
         }
 
         // 3. Verificar que la estación no esté ya en la lista
         // Usamos el .localizar() que corregimos en Lista.java
         if (lista.localizar(estacion) >= 0) {
-            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
+            System.out.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
                     "' ya se encuentra en la línea '" + nombreLinea + "'.");
             return false;
         }
@@ -1223,21 +1223,21 @@ public class TrenesSA {
         // 1. Obtener la lista de estaciones de la línea
         lineales.dinamicas.Lista lista = (lineales.dinamicas.Lista) this.mapeoLineas.get(nombreLinea);
         if (lista == null) {
-            System.err.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
+            System.out.println("Error en MODIFICACIÓN Línea: No se encontró la línea '" + nombreLinea + "'.");
             return false;
         }
 
         // 2. Obtener el objeto Estacion (solo para buscarlo)
         Estacion estacion = (Estacion) this.estaciones.obtener(nombreEstacion);
         if (estacion == null) {
-            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion + "' no existe en el sistema.");
+            System.out.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion + "' no existe en el sistema.");
             return false;
         }
 
         // 3. Localizar la estación en la lista
         int pos = lista.localizar(estacion);
         if (pos < 0) {
-            System.err.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
+            System.out.println("Error en MODIFICACIÓN Línea: La estación '" + nombreEstacion +
                     "' no pertenece a la línea '" + nombreLinea + "'.");
             return false;
         }
@@ -1263,7 +1263,7 @@ public class TrenesSA {
     public Tren consultarInfoTren(int id) {
         Tren tren = (Tren) this.trenes.obtener(id);
         if (tren == null) {
-            System.err.println("Consulta: No se encontró un tren con ID " + id + ".");
+            System.out.println("Consulta: No se encontró un tren con ID " + id + ".");
         }
         return tren;
     }
@@ -1283,7 +1283,7 @@ public class TrenesSA {
         // 1. Obtener el tren
         Tren t = (Tren) this.trenes.obtener(id);
         if (t == null) {
-            System.err.println("Consulta: No se encontró el tren con ID " + id + ".");
+            System.out.println("Consulta: No se encontró el tren con ID " + id + ".");
             return ciudades; // Devuelve lista vacía
         }
 
@@ -1297,7 +1297,7 @@ public class TrenesSA {
         // 3. Obtener la lista de estaciones de esa línea
         Lista estacionesDeLinea = (Lista) this.mapeoLineas.get(nombreLinea);
         if (estacionesDeLinea == null) {
-            System.err.println("Consulta: La línea '" + nombreLinea + "' asignada al tren " + id + " no existe.");
+            System.out.println("Consulta: La línea '" + nombreLinea + "' asignada al tren " + id + " no existe.");
             return ciudades; // Devuelve lista vacía
         }
 
@@ -1324,7 +1324,7 @@ public class TrenesSA {
     public Estacion consultarInfoEstacion(String nombre) {
         Estacion estacion = (Estacion) this.estaciones.obtener(nombre);
         if (estacion == null) {
-            System.err.println("Consulta: No se encontró la estación '" + nombre + "'.");
+            System.out.println("Consulta: No se encontró la estación '" + nombre + "'.");
         }
         return estacion;
     }
@@ -1361,7 +1361,7 @@ public class TrenesSA {
     private Estacion helperObtenerEstacion(String nombre) {
         Estacion e = (Estacion) this.estaciones.obtener(nombre);
         if (e == null) {
-            System.err.println("Error: No se pudo encontrar la estación '" + nombre + "'.");
+            System.out.println("Error: No se pudo encontrar la estación '" + nombre + "'.");
         }
         return e;
     }
@@ -1442,7 +1442,7 @@ public class TrenesSA {
         Lista caminoMasCorto = obtenerCaminoMenorDistancia(nombreEstA, nombreEstB);
 
         if (caminoMasCorto.esVacia()) {
-            System.err.println("Consulta: No existe ningún camino entre " + nombreEstA + " y " + nombreEstB + ".");
+            System.out.println("Consulta: No existe ningún camino entre " + nombreEstA + " y " + nombreEstB + ".");
             return false;
         }
 
@@ -1451,7 +1451,7 @@ public class TrenesSA {
 
         if (costo == -1.0) {
             // Esto no debería pasar si Dijkstra funcionó, pero es un control
-            System.err.println("Error: El camino de Dijkstra es inválido.");
+            System.out.println("Error: El camino de Dijkstra es inválido.");
             return false;
         }
 
