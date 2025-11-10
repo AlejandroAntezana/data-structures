@@ -11,13 +11,13 @@ package dominio;
 public class Tren {
 
     // Atributo inmutable (Clave)
-    private int id; // Identificador numérico único [cite: 15]
+    private int id; // Identificador numérico único
 
     // Atributos mutables (Datos)
     private String propulsion;
     private int vagonesPasajeros;
     private int vagonesCarga;
-    private String linea; // "libre" o "no-asignado" si no tiene [cite: 15]
+    private String linea; // "libre" o "no-asignado" si no tiene
 
     /**
      * Constructor para crear un nuevo Tren.

@@ -57,7 +57,7 @@ public class CeldaCP implements Comparable {
             resultado = 1;
         } else {
             // Prioridades iguales, desempatamos por orden de llegada
-            // (menor orden de llegada = llegó antes) [cite: 984]
+            // (menor orden de llegada = llegó antes)
             if (this.ordenLlegada < otraCelda.getOrdenLlegada()) {
                 resultado = -1;
             } else if (this.ordenLlegada > otraCelda.getOrdenLlegada()) {

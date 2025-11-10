@@ -10,7 +10,7 @@ package conjuntistas.dinamicas;
 public class NodoAdy {
     private NodoVert vertice; // Vértice destino del arco
     private NodoAdy sigAdyacente;
-    private double etiqueta; // Etiqueta numérica (distancia en km para el TP) [cite: 11, 12]
+    private double etiqueta; // Etiqueta numérica (distancia en km)
 
     /**
      * Constructor.

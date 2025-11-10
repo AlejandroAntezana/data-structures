@@ -238,8 +238,8 @@ public class Diccionario {
 
     /**
      * Genera una representación en String de la ESTRUCTURA jerárquica del árbol.
-     * Este método cumple con el requisito de "Mostrar Sistema"[cite: 34],
-     * permitiendo ver la altura de cada nodo y sus hijos[cite: 36].
+     * Este método cumple con el requisito de "Mostrar Sistema",
+     * permitiendo ver la altura de cada nodo y sus hijos.
      *
      * @return un String que describe la jerarquía del árbol (recorrido preorden).
      */

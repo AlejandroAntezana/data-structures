@@ -3647,3 +3647,3193 @@ VERTICE: Estacion: Retiro
 21:05:14.767817807 - MODIFICACIÓN Línea: Se agregó estación 'Neuquén' a la línea 'Tren del Valle'.
 21:05:56.688468870 - MODIFICACIÓN Línea: Se quitó estación 'Neuquén' de la línea 'Tren del Valle'.
 21:06:11.186211268 - BAJA Línea: Se eliminó la línea 'Tren del Valle'.
+21:24:51.290747856 - --- INICIO ESTADO DEL SISTEMA ---
+21:24:51.291068200 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+21:24:51.291744982 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+21:24:51.291998361 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+21:24:51.299764364 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 122
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 122 (Altura: 1)
+	HI: 121
+	HD: -
+
+Nodo: 121 (Altura: 0)
+	HI: -
+	HD: -
+
+
+21:24:51.300070882 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+21:24:51.316169661 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+21:24:51.317406781 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+21:24:51.333787074 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+21:24:51.335507273 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+21:24:51.335873130 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+21:24:51.338717289 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+21:24:51.338920183 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+
+--- INICIO DE SESIÓN: Sun Nov 09 20:20:47 GMT-03:00 2025 ---
+20:21:00.442596143 - INICIO Carga Inicial desde datos.txt
+20:21:00.485318968 - FIN Carga Inicial. Se procesaron 84 líneas.
+20:21:00.485543437 - --- INICIO ESTADO DEL SISTEMA ---
+20:21:00.485648056 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+20:21:00.486523702 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:21:00.487047910 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+20:21:00.487630727 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 121
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 121 (Altura: 1)
+	HI: -
+	HD: 122
+
+Nodo: 122 (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:21:00.488072104 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+20:21:00.505702913 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+20:21:00.508868468 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+20:21:00.509472992 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:21:00.509884760 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:21:00.510119662 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+20:21:00.510350100 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+20:21:00.510569729 - --- FIN ESTADO DEL SISTEMA ---
+20:22:00.925535599 - --- INICIO ESTADO DEL SISTEMA ---
+20:22:00.926422629 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+20:22:00.926756151 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:22:00.927102194 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+20:22:00.931607179 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 121
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 121 (Altura: 1)
+	HI: -
+	HD: 122
+
+Nodo: 122 (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:22:00.931854267 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+20:22:00.938786026 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+20:22:00.944702522 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+20:22:00.945231848 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:22:00.945498438 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:22:00.945661350 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+20:22:00.945845980 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+20:22:00.947132535 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+
+--- INICIO DE SESIÓN: Sun Nov 09 20:34:32 GMT-03:00 2025 ---
+20:39:33.830514743 - --- INICIO ESTADO DEL SISTEMA ---
+20:39:33.834390792 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+20:39:33.834688810 - Diccionario (AVL) vacío.
+20:39:33.834846094 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+20:39:33.834997364 - Diccionario (AVL) vacío.
+20:39:33.835139011 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+20:39:33.835320711 - Grafo vacío.
+20:39:33.835488584 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+20:39:33.835635771 - Mapeo de líneas vacío.
+20:39:33.835788698 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+
+--- INICIO DE SESIÓN: Sun Nov 09 20:39:57 GMT-03:00 2025 ---
+20:40:03.860594143 - INICIO Carga Inicial desde datos.txt
+20:40:03.914554472 - FIN Carga Inicial. Se procesaron 84 líneas.
+20:40:03.914798085 - --- INICIO ESTADO DEL SISTEMA ---
+20:40:03.914956887 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+20:40:03.915346552 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:40:03.915764212 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+20:40:03.916181806 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 121
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 121 (Altura: 1)
+	HI: -
+	HD: 122
+
+Nodo: 122 (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:40:03.916456854 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+20:40:03.927140219 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+20:40:03.927913454 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+20:40:03.928291268 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:40:03.928741730 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:40:03.928957675 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+20:40:03.929121180 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+20:40:03.929253743 - --- FIN ESTADO DEL SISTEMA ---
+20:40:19.789184704 - ALTA Riel: Retiro <-> Once (5.5 km)
+20:41:26.714431651 - MODIFICACIÓN Riel: Retiro <-> Once. Nueva distancia: 6.0 km
+20:42:45.113742196 - BAJA Riel: Retiro <-> Once
+20:43:32.716075065 - ALTA Tren: ID 999
+20:44:02.016804148 - BAJA Tren: ID 999
+20:45:08.694041530 - ALTA Línea: Se creó la línea 'Tren del Valle'.
+20:46:00.215369748 - MODIFICACIÓN Línea: Se agregó estación 'Neuquén' a la línea 'Tren del Valle'.
+20:46:48.863310616 - MODIFICACIÓN Línea: Se quitó estación 'Neuquén' de la línea 'Tren del Valle'.
+20:47:11.276968158 - BAJA Línea: Se eliminó la línea 'Tren del Valle'.
+20:50:37.228170746 - --- INICIO ESTADO DEL SISTEMA ---
+20:50:37.228340975 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+20:50:37.228518435 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:50:37.228595347 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+20:50:37.228825985 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 122
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 122 (Altura: 1)
+	HI: 121
+	HD: -
+
+Nodo: 121 (Altura: 0)
+	HI: -
+	HD: -
+
+
+20:50:37.228882008 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+20:50:37.229774755 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+20:50:37.230229130 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+20:50:37.230409982 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:50:37.230486423 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+20:50:37.230549118 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+20:50:37.230613281 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+20:50:37.230658412 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+
+--- INICIO DE SESIÓN: Mon Nov 10 15:35:18 GMT-03:00 2025 ---
+15:36:34.215441872 - --- INICIO ESTADO DEL SISTEMA ---
+15:36:34.250094146 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+15:36:34.250545095 - Diccionario (AVL) vacío.
+15:36:34.250772225 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+15:36:34.250958352 - Diccionario (AVL) vacío.
+15:36:34.251191460 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+15:36:34.251728866 - Grafo vacío.
+15:36:34.252079590 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+15:36:34.252388358 - Mapeo de líneas vacío.
+15:36:34.252662584 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+
+--- INICIO DE SESIÓN: Mon Nov 10 15:36:41 GMT-03:00 2025 ---
+15:37:49.442006139 - INICIO Carga Inicial desde dat.txt
+15:37:49.461115044 - ERROR CRÍTICO en Carga Inicial: dat.txt (No such file or directory)
+15:38:07.511034395 - INICIO Carga Inicial desde datos.txt
+15:38:07.537430396 - FIN Carga Inicial. Se procesaron 84 líneas.
+15:38:07.539043474 - --- INICIO ESTADO DEL SISTEMA ---
+15:38:07.539291077 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+15:38:07.539752153 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+15:38:07.540037464 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+15:38:07.540539942 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 121
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 121 (Altura: 1)
+	HI: -
+	HD: 122
+
+Nodo: 122 (Altura: 0)
+	HI: -
+	HD: -
+
+
+15:38:07.540784162 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+15:38:07.555558316 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+15:38:07.556299071 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+15:38:07.556824314 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+15:38:07.557015087 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+15:38:07.557148272 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+15:38:07.557248845 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+15:38:07.557408322 - --- FIN ESTADO DEL SISTEMA ---
+15:42:07.524184244 - --- INICIO ESTADO DEL SISTEMA ---
+15:42:07.524546007 - --- 1. ESTRUCTURA DE ESTACIONES (AVL) ---
+15:42:07.527877173 - Nodo: Mendoza (Altura: 4)
+	HI: Federico Lacroze
+	HD: Retiro
+
+Nodo: Federico Lacroze (Altura: 3)
+	HI: Bariloche
+	HD: La Plata
+
+Nodo: Bariloche (Altura: 2)
+	HI: Bahía Blanca
+	HD: Córdoba
+
+Nodo: Bahía Blanca (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Córdoba (Altura: 1)
+	HI: Corrientes
+	HD: -
+
+Nodo: Corrientes (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: La Plata (Altura: 1)
+	HI: Jujuy
+	HD: Mar del Plata
+
+Nodo: Jujuy (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Mar del Plata (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Retiro (Altura: 3)
+	HI: Plaza Constitución
+	HD: Santa Fe
+
+Nodo: Plaza Constitución (Altura: 2)
+	HI: Once
+	HD: Posadas
+
+Nodo: Once (Altura: 1)
+	HI: Neuquén
+	HD: Paraná
+
+Nodo: Neuquén (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Paraná (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Posadas (Altura: 1)
+	HI: -
+	HD: Resistencia
+
+Nodo: Resistencia (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Santa Fe (Altura: 2)
+	HI: Salta
+	HD: Tucumán
+
+Nodo: Salta (Altura: 1)
+	HI: Rosario Norte
+	HD: San Juan
+
+Nodo: Rosario Norte (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: San Juan (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: Tucumán (Altura: 1)
+	HI: -
+	HD: Viedma
+
+Nodo: Viedma (Altura: 0)
+	HI: -
+	HD: -
+
+
+15:42:07.528595183 - --- 2. ESTRUCTURA DE TRENES (AVL) ---
+15:42:07.529286213 - Nodo: 108 (Altura: 4)
+	HI: 104
+	HD: 116
+
+Nodo: 104 (Altura: 2)
+	HI: 102
+	HD: 106
+
+Nodo: 102 (Altura: 1)
+	HI: 101
+	HD: 103
+
+Nodo: 101 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 103 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 106 (Altura: 1)
+	HI: 105
+	HD: 107
+
+Nodo: 105 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 107 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 116 (Altura: 3)
+	HI: 112
+	HD: 120
+
+Nodo: 112 (Altura: 2)
+	HI: 110
+	HD: 114
+
+Nodo: 110 (Altura: 1)
+	HI: 109
+	HD: 111
+
+Nodo: 109 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 111 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 114 (Altura: 1)
+	HI: 113
+	HD: 115
+
+Nodo: 113 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 115 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 120 (Altura: 2)
+	HI: 118
+	HD: 121
+
+Nodo: 118 (Altura: 1)
+	HI: 117
+	HD: 119
+
+Nodo: 117 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 119 (Altura: 0)
+	HI: -
+	HD: -
+
+Nodo: 121 (Altura: 1)
+	HI: -
+	HD: 122
+
+Nodo: 122 (Altura: 0)
+	HI: -
+	HD: -
+
+
+15:42:07.529619370 - --- 3. ESTRUCTURA DE RIELES (GRAFO) ---
+15:42:07.533993365 - 
+VERTICE: Estacion: Resistencia
+  - Domicilio: Av. 9 de Julio 800, Resistencia (H3500)
+  - Vías: 2
+  - Plataformas: 1 -> []
+VERTICE: Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 470.0)]
+VERTICE: Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Corrientes
+  - Domicilio: Av. Maipú 300, Corrientes (W3400)
+  - Vías: 2
+  - Plataformas: 1 (E: 470.0), Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 (E: 500.0)]
+VERTICE: Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 1200.0)]
+VERTICE: Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 820.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 270.0)]
+VERTICE: Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 820.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0)]
+VERTICE: Estacion: Jujuy
+  - Domicilio: Otero 500, Jujuy (Y4600)
+  - Vías: 2
+  - Plataformas: 1 -> [Estacion: Posadas
+  - Domicilio: Av. Mitre 2500, Posadas (N3300)
+  - Vías: 2
+  - Plataformas: 1 (E: 1300.0)]
+VERTICE: Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 1140.0), Estacion: Bariloche
+  - Domicilio: Av. 12 de Octubre 2400, Bariloche (R8400)
+  - Vías: 3
+  - Plataformas: 2 (E: 415.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 530.0)]
+VERTICE: Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 450.0), Estacion: Viedma
+  - Domicilio: Av. Cardenal Cagliero 4000, Viedma (R8500)
+  - Vías: 2
+  - Plataformas: 1 (E: 270.0), Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 530.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 640.0)]
+VERTICE: Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 350.0), Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 450.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 400.0)]
+VERTICE: Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 350.0), Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2 (E: 1200.0), Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 (E: 55.0)]
+VERTICE: Estacion: Federico Lacroze
+  - Domicilio: Av. Corrientes 6000, CABA (C1427)
+  - Vías: 5
+  - Plataformas: 4 -> [Estacion: Paraná
+  - Domicilio: Av. Ramírez 2000, Paraná (E3100)
+  - Vías: 3
+  - Plataformas: 2 (E: 500.0)]
+VERTICE: Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 -> [Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 650.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 1050.0)]
+VERTICE: Estacion: Salta
+  - Domicilio: Ameghino 800, Salta (A4400)
+  - Vías: 3
+  - Plataformas: 2 -> []
+VERTICE: Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Neuquén
+  - Domicilio: Independencia 250, Neuquén (Q8300)
+  - Vías: 3
+  - Plataformas: 2 (E: 1140.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 480.0)]
+VERTICE: Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 -> [Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 170.0), Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4 (E: 480.0), Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 475.0)]
+VERTICE: Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 -> [Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1000.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 550.0)]
+VERTICE: Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 650.0), Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3 (E: 550.0), Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4 -> [Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 170.0), Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 400.0)]
+VERTICE: Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8 -> [Estacion: Bahía Blanca
+  - Domicilio: Av. Cerri 750, Bahía Blanca (B8000)
+  - Vías: 4
+  - Plataformas: 3 (E: 640.0), Estacion: La Plata
+  - Domicilio: Av. 1 1, La Plata (B1900)
+  - Vías: 7
+  - Plataformas: 5 (E: 55.0), Estacion: Mar del Plata
+  - Domicilio: San Juan 1642, Mar del Plata (B7600)
+  - Vías: 5
+  - Plataformas: 4 (E: 400.0)]
+VERTICE: Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6 -> [Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5 (E: 700.0), Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3 (E: 1050.0), Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2 (E: 475.0)]
+15:42:07.536777780 - --- 4. MAPEO DE LÍNEAS (HASHMAP) ---
+15:42:07.537291838 - Línea: Mitre -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Rosario Norte
+  - Domicilio: Av. del Valle 2700, Rosario (S2000)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Córdoba
+  - Domicilio: Blvd. Perón 101, Córdoba (X5000)
+  - Vías: 7
+  - Plataformas: 5, Estacion: Tucumán
+  - Domicilio: Corrientes 1050, Tucumán (T4000)
+  - Vías: 5
+  - Plataformas: 3, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+15:42:07.537696710 - Línea: Sarmiento -> [Estacion: Once
+  - Domicilio: Av. Pueyrredón 100, CABA (C1081)
+  - Vías: 6
+  - Plataformas: 4, Estacion: Santa Fe
+  - Domicilio: Blvd. Gálvez 1150, Santa Fe (S3000)
+  - Vías: 4
+  - Plataformas: 2]
+15:42:07.538150980 - Línea: Roca -> [Estacion: Plaza Constitución
+  - Domicilio: Av. Brasil 1128, CABA (C1154)
+  - Vías: 10
+  - Plataformas: 8]
+15:42:07.538362624 - Línea: San Martín -> [Estacion: Retiro
+  - Domicilio: Av. Ramos Mejía 1430, CABA (C1104)
+  - Vías: 9
+  - Plataformas: 6, Estacion: Mendoza
+  - Domicilio: Av. Las Heras 600, Mendoza (M5500)
+  - Vías: 4
+  - Plataformas: 3, Estacion: San Juan
+  - Domicilio: Av. España 100, San Juan (J5400)
+  - Vías: 2
+  - Plataformas: 2]
+15:42:07.538568236 - --- FIN ESTADO DEL SISTEMA ---
+--- FIN DE SESIÓN --- 
+

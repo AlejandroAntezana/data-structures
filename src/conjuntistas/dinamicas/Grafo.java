@@ -8,15 +8,14 @@ import conjuntistas.dinamicas.Diccionario; // Necesario para caminoMasCorto (BFS
 /**
  * Implementación dinámica (listas de adyacencia) del TDA Grafo Etiquetado.
  * Las operaciones de inserción y eliminación de arcos están adaptadas
- * para un grafo NO DIRIGIDO (ambos sentidos), según lo requerido
- * por el trabajo práctico de dominio.TrenesSA.
+ * para un grafo NO DIRIGIDO (ambos sentidos).
  */
 public class Grafo {
 
     private NodoVert inicio;
 
     /**
-     * Crea un grafo vacío[cite: 397].
+     * Crea un grafo vacío.
      */
     public Grafo() {
         this.inicio = null;
@@ -24,18 +23,18 @@ public class Grafo {
 
     /**
      * Inserta un nuevo vértice en el grafo.
-     * Controla que no se inserten vértices repetidos[cite: 400].
-     * La implementación se basa en el Algoritmo 5.4[cite: 645].
+     * Controla que no se inserten vértices repetidos.
+     * La implementación se basa en el Algoritmo 5.4 del apunte de grafos de la catedra.
      *
      * @param nuevoVertice el elemento a insertar como vértice.
      * @return verdadero si se pudo insertar, falso si ya existía.
      */
     public boolean insertarVertice(Object nuevoVertice) {
         boolean exito = false;
-        // Busca si el vértice ya existe [cite: 641]
+        // Busca si el vértice ya existe
         NodoVert aux = this.ubicarVertice(nuevoVertice);
         if (aux == null) {
-            // Si no existe, lo inserta al inicio de la lista de vértices [cite: 642]
+            // Si no existe, lo inserta al inicio de la lista de vértices
             this.inicio = new NodoVert(nuevoVertice, this.inicio);
             exito = true;
         }
@@ -45,7 +44,7 @@ public class Grafo {
     /**
      * Elimina un vértice del grafo.
      * Si se encuentra, también deben eliminarse todos los arcos que lo tengan
-     * como origen o destino[cite: 404].
+     * como origen o destino.
      *
      * @param elem el elemento del vértice a eliminar.
      * @return verdadero si se encontró y eliminó el vértice, falso en caso contrario.
@@ -118,7 +117,7 @@ public class Grafo {
      * Inserta un arco entre dos vértices. Dado que el TP requiere un grafo
      * no dirigido (ambos sentidos), esta operación inserta
      * el arco (origen -> destino) y el arco (destino -> origen), ambos
-     * con la misma etiqueta[cite: 521].
+     * con la misma etiqueta.
      *
      * @param origen  el elemento del vértice origen.
      * @param destino el elemento del vértice destino.
@@ -148,7 +147,7 @@ public class Grafo {
 
     /**
      * Elimina el arco entre dos vértices. Dado que es un grafo no dirigido,
-     * elimina el arco en AMBOS sentidos (O -> D y D -> O)[cite: 521].
+     * elimina el arco en AMBOS sentidos (O -> D y D -> O).
      *
      * @param origen  el elemento del vértice origen.
      * @param destino el elemento del vértice destino.
@@ -173,7 +172,7 @@ public class Grafo {
 
     /**
      * Método auxiliar privado que ubica un vértice en la lista de vértices.
-     * Basado en el Algoritmo 5.4[cite: 643, 645].
+     * Basado en el Algoritmo 5.4.
      *
      * @param buscado el elemento del vértice a buscar.
      * @return el NodoVert si se encuentra, o null si no existe.
@@ -187,7 +186,7 @@ public class Grafo {
     }
 
     /**
-     * Verifica si un vértice existe en el grafo[cite: 412].
+     * Verifica si un vértice existe en el grafo.
      * @param buscado el elemento a buscar.
      * @return verdadero si está en la estructura, falso en caso contrario.
      */
@@ -196,7 +195,7 @@ public class Grafo {
     }
 
     /**
-     * Verifica si existe un arco entre dos vértices[cite: 414].
+     * Verifica si existe un arco entre dos vértices.
      * En esta implementación, solo verifica el sentido (origen -> destino).
      *
      * @param origen  elemento del vértice origen.
@@ -239,7 +238,7 @@ public class Grafo {
         Lista visitados = new Lista();
         NodoVert aux = this.inicio;
         // Itera sobre todos los vértices para asegurar que se visitan
-        // todos los componentes conexos del grafo [cite: 648]
+        // todos los componentes conexos del grafo
         while (aux != null) {
             if (visitados.localizar(aux.getElem()) < 0) {
                 // Si el vértice no fue visitado, inicia el DFS desde él
@@ -258,14 +257,14 @@ public class Grafo {
      */
     private void listarEnProfundidadAux(NodoVert n, Lista vis) {
         if (n != null) {
-            // 1. Marca al vértice n como visitado [cite: 652]
+            // 1. Marca al vértice n como visitado
             vis.insertar(n.getElem(), vis.longitud() + 1);
 
             // 2. Recorre sus adyacentes
             NodoAdy ady = n.getPrimerAdy();
             while (ady != null) {
                 NodoVert vertDestino = ady.getVertice();
-                // 3. Si el adyacente no fue visitado, llama recursivamente [cite: 652]
+                // 3. Si el adyacente no fue visitado, llama recursivamente
                 if (vis.localizar(vertDestino.getElem()) < 0) {
                     listarEnProfundidadAux(vertDestino, vis);
                 }
@@ -310,11 +309,11 @@ public class Grafo {
         while (!q.esVacia()) {
             NodoVert u = (NodoVert) q.obtenerFrente();
             q.sacar();
-            // "para cada vértice v adyacente de u" [cite: 318]
+            // "para cada vértice v adyacente de u"
             NodoAdy ady = u.getPrimerAdy();
             while (ady != null) {
                 NodoVert v = ady.getVertice();
-                // "si v no está en visitados" [cite: 318]
+                // "si v no está en visitados"
                 if (visitados.localizar(v.getElem()) < 0) {
                     visitados.insertar(v.getElem(), visitados.longitud() + 1);
                     q.poner(v);
@@ -325,7 +324,7 @@ public class Grafo {
     }
 
     /**
-     * Verifica si existe al menos un camino entre origen y destino[cite: 416].
+     * Verifica si existe al menos un camino entre origen y destino.
      * Utiliza una búsqueda en profundidad (DFS).
      * Implementación basada en el Algoritmo 5.6.
      *
@@ -335,13 +334,13 @@ public class Grafo {
      */
     public boolean existeCamino(Object origen, Object destino) {
         boolean exito = false;
-        // 1. Verificar que ambos vértices existen [cite: 661]
+        // 1. Verificar que ambos vértices existen
         NodoVert nodoO = this.ubicarVertice(origen);
         NodoVert nodoD = this.ubicarVertice(destino);
 
         if (nodoO != null && nodoD != null) {
-            // 2. Si existen, busca el camino [cite: 677]
-            Lista visitados = new Lista(); // Lista para evitar ciclos [cite: 655]
+            // 2. Si existen, busca el camino
+            Lista visitados = new Lista(); // Lista para evitar ciclos
             exito = existeCaminoAux(nodoO, destino, visitados);
         }
         return exito;
@@ -354,7 +353,7 @@ public class Grafo {
     private boolean existeCaminoAux(NodoVert n, Object dest, Lista vis) {
         boolean exito = false;
         if (n != null) {
-            // 1. Si vértice n es el destino: HAY CAMINO! [cite: 685]
+            // 1. Si vértice n es el destino: HAY CAMINO
             if (n.getElem().equals(dest)) {
                 exito = true;
             } else {
@@ -362,7 +361,7 @@ public class Grafo {
                 vis.insertar(n.getElem(), vis.longitud() + 1);
                 NodoAdy ady = n.getPrimerAdy();
                 while (!exito && ady != null) {
-                    // 3. Visitar adyacentes no visitados [cite: 692]
+                    // 3. Visitar adyacentes no visitados
                     if (vis.localizar(ady.getVertice().getElem()) < 0) {
                         exito = existeCaminoAux(ady.getVertice(), dest, vis);
                     }
@@ -414,7 +413,7 @@ public class Grafo {
                 NodoVert v = ady.getVertice();
                 Object elemV = v.getElem();
 
-                // 3. Si 'v' no fue visitado (¡AQUÍ USAMOS LA LISTA CORREGIDA!)
+                // 3. Si 'v' no fue visitado (USO LA LISTA CORREGIDA)
                 if (visitados.localizar(elemV) < 0) {
 
                     // 4. Marcar como visitado y guardar predecesor
@@ -433,7 +432,7 @@ public class Grafo {
 
         // 6. Reconstruir el camino si fue encontrado
         if (encontrado) {
-            // Usamos el método auxiliar que ya teníamos para Dijkstra
+            // Usamos el metodo auxiliar que ya teníamos para Dijkstra
             camino = reconstruirCamino(predecesores, origen, destino);
         }
 
@@ -667,7 +666,7 @@ public class Grafo {
             aux = aux.getSigVertice();
         }
 
-        // 2. Distancia al origen es 0 y lo encolamos
+        // 2. Distancia al origen es 0 y lo añadimos a la cola
         distancias.insertar((Comparable) origen, 0.0);
         pq.insertar(nodoO, 0.0); // (Elemento: NodoVert, Prioridad: 0.0)
 
