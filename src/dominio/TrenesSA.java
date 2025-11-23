@@ -1438,6 +1438,7 @@ public class TrenesSA {
      * @return verdadero si el camino más corto es <= maxKm, falso en caso contrario.
      */
     public boolean esPosibleViajarEnKm(String nombreEstA, String nombreEstB, double maxKm) {
+        //
         // 1. Obtener el camino más corto en distancia
         Lista caminoMasCorto = obtenerCaminoMenorDistancia(nombreEstA, nombreEstB);
 

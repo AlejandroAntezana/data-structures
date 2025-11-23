@@ -262,16 +262,20 @@ public class ArbolAVL {
         if (balance > 1) { // Desbalanceado a la izquierda
             if (calcularBalance(nodo.getIzquierdo()) < 0) {
                 // Rotación doble Izquierda-Derecha
+                System.out.println("Rotazion doble Izquierda-derecha");
                 nodo.setIzquierdo(rotarIzquierda(nodo.getIzquierdo()));
             }
             // Rotación simple Derecha
+            System.out.println("Rotacion Simple Derecha");
             nodo = rotarDerecha(nodo);
         } else if (balance < -1) { // Desbalanceado a la derecha
             if (calcularBalance(nodo.getDerecho()) > 0) {
                 // Rotación doble Derecha-Izquierda
+                System.out.println("Rotacion Doble Derecha-Izquierda");
                 nodo.setDerecho(rotarDerecha(nodo.getDerecho()));
             }
             // Rotación simple Izquierda
+            System.out.println("Rotacion Simple Izquierda");
             nodo = rotarIzquierda(nodo);
         }
         return nodo;
@@ -287,6 +291,8 @@ public class ArbolAVL {
         r.recalcularAltura();
         // y luego la del nuevo nodo raíz (h)
         h.recalcularAltura();
+
+
 
         return h;
     }
