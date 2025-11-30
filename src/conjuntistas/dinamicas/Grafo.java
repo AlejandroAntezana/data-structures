@@ -466,33 +466,6 @@ public class Grafo {
     }
 
     /**
-     * Método auxiliar recursivo (DFS/Backtracking) para encontrar todos los caminos.
-     */
-    private void todosCaminosAux(NodoVert n, Object dest, Lista visitados, Lista caminoActual, Lista listaDeCaminos) {
-        // 1. Agregamos el nodo actual al camino y lo marcamos como visitado
-        caminoActual.insertar(n.getElem(), caminoActual.longitud() + 1);
-        visitados.insertar(n.getElem(), 1); // Posición 1 es la más rápida
-
-        // 2. Verificamos si llegamos al destino
-        if (n.getElem().equals(dest)) {
-            listaDeCaminos.insertar(caminoActual.clone(), 1);
-        } else {
-            // 3. Si no es el destino, exploramos adyacentes
-            NodoAdy ady = n.getPrimerAdy();
-            while (ady != null) {
-                if (visitados.localizar(ady.getVertice().getElem()) < 0) {
-                    todosCaminosAux(ady.getVertice(), dest, visitados, caminoActual, listaDeCaminos);
-                }
-                ady = ady.getSigAdyacente();
-            }
-        }
-
-        // 4. BACKTRACKING
-        caminoActual.eliminar(caminoActual.longitud());
-        visitados.eliminar(visitados.localizar(n.getElem()));
-    }
-
-    /**
      * Auxiliar (privado) para reconstruir el camino desde el mapa de predecesores
      * generado por Dijkstra o BFS.
      */
@@ -695,86 +668,98 @@ public class Grafo {
      * Busca el camino de menor costo (distancia) desde un vértice origen
      * a un vértice destino, utilizando el algoritmo de Dijkstra con una
      * Cola de Prioridad (Min-Heap).
+     * Eficiencia: O(E log V).
      *
-     * @param origen  el elemento del vértice origen.
-     * @param destino el elemento del vértice destino.
+     * @param origen  el elemento del vértice origen (debe ser Comparable).
+     * @param destino el elemento del vértice destino (debe ser Comparable).
      * @return una Lista con el camino de menor distancia. Si no hay
      * camino, devuelve una lista vacía.
      */
     public Lista caminoMenorDistancia(Object origen, Object destino) {
+        // Variable de retorno única
         Lista camino = new Lista();
+
         NodoVert nodoO = this.ubicarVertice(origen);
         NodoVert nodoD = this.ubicarVertice(destino);
 
-        if (nodoO == null || nodoD == null) {
-            return camino;
-        }
+        // Verificación inicial: solo procedemos si ambos nodos existen
+        if (nodoO != null && nodoD != null) {
 
-        // --- Inicialización de Dijkstra ---
-        Diccionario distancias = new Diccionario();
-        Diccionario predecesores = new Diccionario();
-        ColaPrioridad pq = new ColaPrioridad();
+            // --- Inicialización de Dijkstra ---
+            Diccionario distancias = new Diccionario();
+            Diccionario predecesores = new Diccionario();
+            ColaPrioridad pq = new ColaPrioridad();
 
-        // 1. Inicializar todas las distancias a "infinito"
-        NodoVert aux = this.inicio;
-        while (aux != null) {
-            Comparable elem = (Comparable) aux.getElem();
-            distancias.insertar(elem, Double.MAX_VALUE);
-            predecesores.insertar(elem, null);
-            aux = aux.getSigVertice();
-        }
-
-        // 2. Distancia al origen es 0 y lo añadimos a la cola
-        distancias.insertar((Comparable) origen, 0.0);
-        pq.insertar(nodoO, 0.0);
-
-        // --- Bucle principal de Dijkstra ---
-        while (!pq.esVacia()) {
-            CeldaCP celdaMin = pq.obtenerFrenteCelda();
-            pq.eliminarFrente();
-
-            NodoVert u = (NodoVert) celdaMin.getElemento();
-            double distPrioU = celdaMin.getPrioridad();
-            Comparable elemU = (Comparable) u.getElem();
-
-            double distActualU = (Double) distancias.obtener(elemU);
-
-            if (distPrioU > distActualU) {
-                continue;
+            // 1. Inicializar todas las distancias a "infinito"
+            NodoVert aux = this.inicio;
+            while (aux != null) {
+                Comparable elem = (Comparable) aux.getElem();
+                distancias.insertar(elem, Double.MAX_VALUE);
+                predecesores.insertar(elem, null);
+                aux = aux.getSigVertice();
             }
 
-            if (u == nodoD) {
-                break;
-            }
+            // 2. Distancia al origen es 0 y lo añadimos a la cola
+            distancias.insertar((Comparable) origen, 0.0);
+            pq.insertar(nodoO, 0.0);
 
-            NodoAdy ady = u.getPrimerAdy();
-            while (ady != null) {
-                NodoVert v = ady.getVertice();
-                Comparable elemV = (Comparable) v.getElem();
-                double pesoUV = ady.getEtiqueta();
+            boolean llegado = false;
 
-                double nuevaDistV = distActualU + pesoUV;
-                double distActualV = (Double) distancias.obtener(elemV);
+            // --- Bucle principal de Dijkstra ---
+            while (!pq.esVacia() && !llegado) {
+                CeldaCP celdaMin = pq.obtenerFrenteCelda();
+                pq.eliminarFrente();
 
-                if (nuevaDistV < distActualV) {
-                    distancias.insertar(elemV, nuevaDistV);
-                    predecesores.insertar(elemV, u);
-                    pq.insertar(v, nuevaDistV);
+                NodoVert u = (NodoVert) celdaMin.getElemento();
+                double distPrioU = celdaMin.getPrioridad();
+                Comparable elemU = (Comparable) u.getElem();
+
+                double distActualU = (Double) distancias.obtener(elemU);
+
+                // Solo procesamos si la distancia de la cola es válida (no "caduca")
+                if (distPrioU <= distActualU) {
+
+                    // Verificamos si llegamos al destino
+                    if (u == nodoD) {
+                        llegado = true;
+                    } else {
+                        // Relajación de arcos (solo si no hemos llegado)
+                        NodoAdy ady = u.getPrimerAdy();
+                        while (ady != null) {
+                            NodoVert v = ady.getVertice();
+                            Comparable elemV = (Comparable) v.getElem();
+                            double pesoUV = ady.getEtiqueta();
+
+                            double nuevaDistV = distActualU + pesoUV;
+                            double distActualV = (Double) distancias.obtener(elemV);
+
+                            if (nuevaDistV < distActualV) {
+                                distancias.insertar(elemV, nuevaDistV);
+                                predecesores.insertar(elemV, u);
+                                pq.insertar(v, nuevaDistV);
+                            }
+                            ady = ady.getSigAdyacente();
+                        }
+                    }
                 }
-                ady = ady.getSigAdyacente();
+            }
+
+            // --- Reconstrucción del camino ---
+            // Verificamos si efectivamente se encontró un camino válido
+            if ((Double) distancias.obtener((Comparable) destino) != Double.MAX_VALUE) {
+                camino = reconstruirCamino(predecesores, origen, destino);
             }
         }
-
-        if ((Double) distancias.obtener((Comparable) destino) != Double.MAX_VALUE) {
-            camino = reconstruirCamino(predecesores, origen, destino);
-        }
-
         return camino;
     }
 
     /**
      * Devuelve una lista con TODOS los caminos posibles entre origen y destino
      * que NO pasen por el vértice 'evitar'.
+     * Utiliza un algoritmo de Backtracking (DFS).
+     * * ESTRATEGIA: Utiliza una sola lista auxiliar ('caminoActual') que cumple
+     * doble función: construye la ruta y sirve de control de visitados para
+     * evitar ciclos en la rama actual.
      *
      * @param origen  el elemento del vértice origen.
      * @param destino el elemento del vértice destino.
@@ -783,23 +768,68 @@ public class Grafo {
      */
     public Lista obtenerTodosCaminos(Object origen, Object destino, Object evitar) {
         Lista listaDeCaminos = new Lista();
+
         NodoVert nodoO = this.ubicarVertice(origen);
         NodoVert nodoD = this.ubicarVertice(destino);
         NodoVert nodoE = this.ubicarVertice(evitar);
 
-        if (nodoO == null || nodoD == null || nodoE == null) {
+        // Verificación inicial estructurada
+        if (nodoO != null && nodoD != null && nodoE != null) {
+            // Usamos una sola lista para el camino actual y el control de ciclos
+            Lista caminoActual = new Lista();
+
+            // Llamada al método recursivo
+            todosCaminosAux(nodoO, destino, evitar, caminoActual, listaDeCaminos);
+        } else {
             System.err.println("Error: Origen, destino o vértice a evitar no existen.");
-            return listaDeCaminos;
         }
 
-        Lista visitados = new Lista();
-        Lista caminoActual = new Lista();
-
-        visitados.insertar(evitar, 1);
-
-        todosCaminosAux(nodoO, destino, visitados, caminoActual, listaDeCaminos);
-
         return listaDeCaminos;
+    }
+
+    /**
+     * Método auxiliar recursivo (DFS/Backtracking) para encontrar todos los caminos.
+     * Código Estructurado: Sin returns múltiples ni breaks.
+     *
+     * @param n              El nodo actual.
+     * @param dest           El elemento destino.
+     * @param evitar         El elemento a evitar.
+     * @param caminoActual   Lista que mantiene el camino y actúa como visitados.
+     * @param listaDeCaminos Lista donde se acumulan los caminos exitosos.
+     */
+    private void todosCaminosAux(NodoVert n, Object dest, Object evitar, Lista caminoActual, Lista listaDeCaminos) {
+
+        // 1. Paso Avance: Agregamos nodo al camino actual (y por ende, a visitados)
+        // Lo agregamos al final para mantener el orden del camino
+        caminoActual.insertar(n.getElem(), caminoActual.longitud() + 1);
+
+        // 2. Paso Evaluación
+        if (n.getElem().equals(dest)) {
+            // Caso Base: Llegamos al destino. Clonamos y guardamos.
+            listaDeCaminos.insertar(caminoActual.clone(), 1);
+        } else {
+            // Paso Recursivo: Explorar adyacentes
+            NodoAdy ady = n.getPrimerAdy();
+
+            while (ady != null) {
+                Object elemAdy = ady.getVertice().getElem();
+
+                // Condición Estructurada para avanzar:
+                // 1. Que no sea el nodo a evitar
+                // 2. Que no esté ya en el camino actual (evitar ciclos)
+                if (!elemAdy.equals(evitar) && caminoActual.localizar(elemAdy) < 0) {
+                    todosCaminosAux(ady.getVertice(), dest, evitar, caminoActual, listaDeCaminos);
+                }
+
+                // Avanzamos al siguiente adyacente
+                ady = ady.getSigAdyacente();
+            }
+        }
+
+        // 3. Paso Retroceso (Backtracking)
+        // Quitamos el último nodo agregado para dejar la lista preparada para
+        // la siguiente rama de la recursión.
+        caminoActual.eliminar(caminoActual.longitud());
     }
 
     /**
@@ -833,4 +863,76 @@ public class Grafo {
         }
         return costoTotal;
     }
+    //Agrego el metodo del punto 8d.
+
+    /**
+     * Verifica si existe algún camino entre origen y destino cuyo costo total
+     * en kilómetros sea menor o igual al límite especificado.
+     * Utiliza DFS (Profundidad) con PODA para detener la búsqueda en ramas
+     * que excedan el límite.
+     *
+     * @param origen   Elemento del vértice origen.
+     * @param destino  Elemento del vértice destino.
+     * @param limiteKm Cantidad máxima de kilómetros permitidos.
+     * @return verdadero si existe al menos un camino válido, falso en caso contrario.
+     */
+    public boolean verificarCaminoConLimite(Object origen, Object destino, double limiteKm) {
+        boolean existe = false;
+
+        NodoVert nodoO = this.ubicarVertice(origen);
+        NodoVert nodoD = this.ubicarVertice(destino);
+
+        if (nodoO != null && nodoD != null) {
+            // Usamos una lista de visitados para evitar ciclos en la búsqueda
+            Lista visitados = new Lista();
+
+            // Iniciamos la recursión con 0 km acumulados
+            existe = verificarCaminoConLimiteAux(nodoO, destino, limiteKm, 0.0, visitados);
+        }
+
+        return existe;
+    }
+
+    /**
+     * Método auxiliar recursivo estructurado.
+     * Realiza la búsqueda en profundidad y aplica PODA por límite de distancia.
+     */
+    private boolean verificarCaminoConLimiteAux(NodoVert n, Object dest, double limite, double kmActual, Lista visitados) {
+        boolean encontrado = false;
+
+        // 1. Marcar como visitado (para no enciclarse en esta rama)
+        visitados.insertar(n.getElem(), 1);
+
+        // 2. Verificar si es el destino
+        if (n.getElem().equals(dest)) {
+            // Si llegamos aquí, es porque kmActual <= limite (gracias a la poda previa)
+            encontrado = true;
+        } else {
+            // 3. Iterar sobre los adyacentes
+            NodoAdy ady = n.getPrimerAdy();
+
+            while (ady != null && !encontrado) {
+                Object elemAdy = ady.getVertice().getElem();
+                double pesoArco = ady.getEtiqueta();
+                double nuevoAcumulado = kmActual + pesoArco;
+
+                // --- LÓGICA DE PODA ESTRUCTURADA ---
+                // Solo avanzamos si:
+                // a) El nodo no ha sido visitado en este camino.
+                // b) La suma de km NO supera el límite (Aquí está la poda).
+                if (visitados.localizar(elemAdy) < 0 && nuevoAcumulado <= limite) {
+                    encontrado = verificarCaminoConLimiteAux(ady.getVertice(), dest, limite, nuevoAcumulado, visitados);
+                }
+
+                ady = ady.getSigAdyacente();
+            }
+        }
+
+        // 4. Backtracking (Desmarcar para permitir otros caminos futuros si fuera necesario,
+        //    aunque al encontrar uno ya cortamos con el flag 'encontrado')
+        visitados.eliminar(1);
+
+        return encontrado;
+    }
+
 }

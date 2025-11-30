@@ -1378,12 +1378,13 @@ public class TrenesSA {
         // 1. Obtener los objetos Estacion
         Estacion eA = helperObtenerEstacion(nombreEstA);
         Estacion eB = helperObtenerEstacion(nombreEstB);
+        Lista caminoResultante = new Lista();
 
         // 2. Llamar al método del grafo (BFS)
         if (eA != null && eB != null) {
-            return this.redDeRieles.caminoMasCorto(eA, eB);
+            caminoResultante = this.redDeRieles.caminoMasCorto(eA, eB);
         }
-        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+        return caminoResultante; // Devuelve lista vacía si las estaciones no existen
     }
 
     /**
@@ -1398,12 +1399,13 @@ public class TrenesSA {
         // 1. Obtener los objetos Estacion
         Estacion eA = helperObtenerEstacion(nombreEstA);
         Estacion eB = helperObtenerEstacion(nombreEstB);
+        Lista caminoResultante = new Lista();
 
         // 2. Llamar al método del grafo (Dijkstra)
         if (eA != null && eB != null) {
-            return this.redDeRieles.caminoMenorDistancia(eA, eB);
+            caminoResultante = this.redDeRieles.caminoMenorDistancia(eA, eB);
         }
-        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+        return caminoResultante; // Devuelve lista vacía si las estaciones no existen
     }
 
     /**
@@ -1420,17 +1422,18 @@ public class TrenesSA {
         Estacion eA = helperObtenerEstacion(nombreEstA);
         Estacion eB = helperObtenerEstacion(nombreEstB);
         Estacion eC = helperObtenerEstacion(nombreEstC);
+        Lista listaCaminos = new Lista();
 
         // 2. Llamar al método del grafo (DFS/Backtracking)
         if (eA != null && eB != null && eC != null) {
-            return this.redDeRieles.obtenerTodosCaminos(eA, eB, eC);
+            listaCaminos = this.redDeRieles.obtenerTodosCaminos(eA, eB, eC);
         }
-        return new Lista(); // Devuelve lista vacía si las estaciones no existen
+        return listaCaminos; // Devuelve lista vacía si las estaciones no existen
     }
 
     /**
      * Verifica si es posible viajar de A a B con un límite de KM.
-     * (Implementa la Opción 8, parte D - Opcional *).
+     * (Implementa Ejercicio 8 inciso d).
      *
      * @param nombreEstA Nombre de la estación Origen.
      * @param nombreEstB Nombre de la estación Destino.
@@ -1438,29 +1441,24 @@ public class TrenesSA {
      * @return verdadero si el camino más corto es <= maxKm, falso en caso contrario.
      */
     public boolean esPosibleViajarEnKm(String nombreEstA, String nombreEstB, double maxKm) {
-        //
-        // 1. Obtener el camino más corto en distancia
-        Lista caminoMasCorto = obtenerCaminoMenorDistancia(nombreEstA, nombreEstB);
+        // 1. Obtener los objetos Estacion (solo para validar existencia y pasar los objetos)
+        Estacion eA = helperObtenerEstacion(nombreEstA);
+        Estacion eB = helperObtenerEstacion(nombreEstB);
+        boolean esPosible = false;
 
-        if (caminoMasCorto.esVacia()) {
-            System.out.println("Consulta: No existe ningún camino entre " + nombreEstA + " y " + nombreEstB + ".");
-            return false;
+        if (eA != null && eB != null) {
+            System.out.println("Verificando ruta de '" + nombreEstA + "' a '" + nombreEstB + "' con máximo " + maxKm + " km...");
+
+            // 2. Llamar al metodo de busqueda en la clase grafo.
+            esPosible = this.redDeRieles.verificarCaminoConLimite(eA, eB, maxKm);
+
+            // 3. Mostrar resultado
+            if (esPosible) {
+                System.out.println("Resultado: SÍ es posible llegar dentro del límite.");
+            } else {
+                System.out.println("Resultado: NO se encontró ningún camino dentro del límite.");
+            }
         }
-
-        // 2. Calcular el costo de ese camino
-        double costo = this.redDeRieles.calcularCostoCamino(caminoMasCorto);
-
-        if (costo == -1.0) {
-            // Esto no debería pasar si Dijkstra funcionó, pero es un control
-            System.out.println("Error: El camino de Dijkstra es inválido.");
-            return false;
-        }
-
-        // 3. Comparar y devolver
-        boolean esPosible = (costo <= maxKm);
-        System.out.println("Consulta: El camino más corto es de " + costo + " km.");
-        System.out.println("  - Límite: " + maxKm + " km.");
-        System.out.println("  - ¿Es posible? " + (esPosible ? "Sí" : "No"));
 
         return esPosible;
     }

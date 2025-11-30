@@ -262,7 +262,7 @@ public class ArbolAVL {
         if (balance > 1) { // Desbalanceado a la izquierda
             if (calcularBalance(nodo.getIzquierdo()) < 0) {
                 // Rotación doble Izquierda-Derecha
-                System.out.println("Rotazion doble Izquierda-derecha");
+                System.out.println("Rotacion doble Izquierda-derecha");
                 nodo.setIzquierdo(rotarIzquierda(nodo.getIzquierdo()));
             }
             // Rotación simple Derecha

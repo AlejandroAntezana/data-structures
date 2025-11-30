@@ -195,13 +195,17 @@ public class Diccionario {
         int balance = calcularBalance(nodo);
         if (balance > 1) {
             if (calcularBalance(nodo.getIzquierdo()) < 0) {
+                System.out.println("Rotacion doble Izquierda-derecha");
                 nodo.setIzquierdo(rotarIzquierda(nodo.getIzquierdo()));
             }
+            System.out.println("Rotacion Simple Derecha");
             nodo = rotarDerecha(nodo);
         } else if (balance < -1) {
             if (calcularBalance(nodo.getDerecho()) > 0) {
+                System.out.println("Rotacion Doble Derecha-Izquierda");
                 nodo.setDerecho(rotarDerecha(nodo.getDerecho()));
             }
+            System.out.println("Rotacion Simple Izquierda");
             nodo = rotarIzquierda(nodo);
         }
         return nodo;
