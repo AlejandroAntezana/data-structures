@@ -248,11 +248,14 @@ public class Diccionario {
      * @return un String que describe la jerarquía del árbol (recorrido preorden).
      */
     public String toStringEstructura() {
+        String resultado = "";
         if (this.raiz == null) {
-            return "Diccionario (AVL) vacío.";
+            resultado = "Diccionario (AVL) vacío.";
+        }else{
+            // Llama al método recursivo auxiliar que inicia desde la raíz.
+            resultado = toStringEstructuraAux(this.raiz);
         }
-        // Llama al método recursivo auxiliar que inicia desde la raíz.
-        return toStringEstructuraAux(this.raiz);
+        return resultado;
     }
 
     /**

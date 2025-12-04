@@ -4,7 +4,7 @@ import lineales.dinamicas.ColaPrioridad;
 import lineales.dinamicas.CeldaCP;
 import lineales.dinamicas.Lista;
 import lineales.dinamicas.Cola;
-import conjuntistas.dinamicas.Diccionario;
+
 
 /**
  * Implementación dinámica (listas de adyacencia) del TDA Grafo Etiquetado.
@@ -895,17 +895,16 @@ public class Grafo {
 
     /**
      * Método auxiliar recursivo estructurado.
-     * Realiza la búsqueda en profundidad y aplica PODA por límite de distancia.
      */
     private boolean verificarCaminoConLimiteAux(NodoVert n, Object dest, double limite, double kmActual, Lista visitados) {
         boolean encontrado = false;
 
-        // 1. Marcar como visitado (para no enciclarse en esta rama)
+        // 1. Marcar como visitado
         visitados.insertar(n.getElem(), 1);
 
         // 2. Verificar si es el destino
         if (n.getElem().equals(dest)) {
-            // Si llegamos aquí, es porque kmActual <= limite (gracias a la poda previa)
+            // Si llego aca, es porque kmActual <= limite
             encontrado = true;
         } else {
             // 3. Iterar sobre los adyacentes
@@ -916,10 +915,9 @@ public class Grafo {
                 double pesoArco = ady.getEtiqueta();
                 double nuevoAcumulado = kmActual + pesoArco;
 
-                // --- LÓGICA DE PODA ESTRUCTURADA ---
                 // Solo avanzamos si:
                 // a) El nodo no ha sido visitado en este camino.
-                // b) La suma de km NO supera el límite (Aquí está la poda).
+                // b) La suma de km NO supera el límite.
                 if (visitados.localizar(elemAdy) < 0 && nuevoAcumulado <= limite) {
                     encontrado = verificarCaminoConLimiteAux(ady.getVertice(), dest, limite, nuevoAcumulado, visitados);
                 }

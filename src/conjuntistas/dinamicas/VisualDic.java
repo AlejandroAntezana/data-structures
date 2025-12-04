@@ -4,7 +4,7 @@ package conjuntistas.dinamicas;
 /**
  * ESTA ES UNA VERSIÓN DE PRUEBA DEL DICCIONARIO.
  * Su único propósito es imprimir en consola cada vez que se
- * produce una rotación, para fines de demostración y defensa.
+ * produce una rotación.
  */
 public class VisualDic {
     private NodoDic raiz;
